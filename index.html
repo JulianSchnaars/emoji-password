@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Mobile Authentication</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container" id="mobile">
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+                <form id="password-input" action="send.php" method="post" autocomplete="off">
+                    <h3>Fragen <small>(1/3)</small></h3>
+                    <section>
+                        <hr>
+                        <p>How many accounts do you have that you regularly log into?</p>
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" id="" value="option1"> 1
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" id="" value="option2"> 2
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" id="" value="option3"> 3
+                        </label>
+                    </section>
+                    <section>
+                        <hr>
+                        <p>How many of your passwords do you type on mobile devices?</p>
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" id="" value="option1"> 1
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" id="" value="option2"> 2
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" id="" value="option3"> 3
+                        </label>
+                    </section>
+                    <section>
+                        <hr>
+                        <p>How many of your accounts provide an alternative/different authentication method for their mobile websites/app?</p>
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" id="" value="option1"> 1
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" id="" value="option2"> 2
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" id="" value="option3"> 3
+                        </label>
+                    </section>
+                    <h3>Pers&ouml;nliche Informationen <small>(2/3)</small></h3>
+                    <section>
+                        <hr>
+                        <p>Geschlecht</p>
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" id="" value="option1"> männlich
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" id="" value="option2"> weiblich
+                        </label>
+                    </section>
+                    <section>
+                        <hr>
+                        <p>Alter</p>
+                        <input type="number" class="form-control" placeholder="Alter" min="10" max="100">
+                    </section>
+                    <h3>Passwort <small>(3/3)</small> </h3>
+                    <section>
+                        <hr>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris aliquet malesuada feugiat. Curabitur fermentum bibendum nulla, non dictum ipsum tincidunt non.
+                        </p>
+                        <p>Hinwei&szlig;: Emoji sind erlaubt.</p>
+                        <hr>
+                        <div class="form-group noselect">
+                            <label for="emojiPassword">Passwort:</label>
+                            <input type="text" name="password-1" unselectable="on" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="form-control noselect" id="password-1" placeholder="Passwort">
+                        </div>
+                        <div class="form-group">
+                            <label for="emojiPasswordReenter">Passwort best&auml;tigen:</label>
+                            <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="form-control" id="password-2" placeholder="Passwort wiederholen">
+                        </div>
+                        <p class="help-block" id="help-text"></p>
+                        <input type="text" name="password" id="password-real" value="">
+                        <!--<div class="checkbox">
+                    <label>
+                        <input type="checkbox"> Check me out
+                    </label>
+                </div>-->
+                        <button type="button" class="btn btn-default" id="clear">Passwordfelder löschen</button>
+                        <button type="submit" class="btn btn-primary" id="submit">Absenden</button>
+                    </section>
+                </form>
+                <p id="control"></p>
+            </div>
+        </div>
+    </div>
+        <!--###### Message for desktop browser #####-->
+    <div class="container hidden" id="desktop">
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3">
+                <h3>You seem to be on a desktop browser.</h3>
+                <p>This is a mobile study. We like to ask you to come back on your smartphone or tablet.</p>
+                <p><strong>Just grab a mobile device and get back here fast by using this link:</strong>
+                <button type="button" class="btn btn-default btn-lg"><a href="https://goo.gl/yohfJl">goo.gl/yohfJl</a></button></p>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.caret.js"></script>
+    <script src="js/password-input-2.js"></script>
+</body>
+
+</html>

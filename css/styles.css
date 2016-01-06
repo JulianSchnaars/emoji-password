@@ -1,0 +1,55 @@
+#password-input {}
+
+.password-value {}
+
+#password-input > input,
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+section {
+    margin-bottom: 40px;
+}
+section > p {
+    font-weight: 500;
+}
+form h3 {
+    margin-top: 50px;
+}
+form h3:first-child {
+    margin-top: 30px;
+}
+input[type='radio'] {
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+    width: 1em;
+}
+#desktop {
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 100;
+    margin-top: 200px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: rgba(200,200,200,.9);
+}
+#desktop p {
+    margin-bottom: 20px;
+}
+#mobile {
+    z-index: 1;
+}
+.half-opacity {
+    opacity: .5;
+    pointer-events: none;
+    -webkit-filter: blur(1px);filter: blur(1px);
+}
