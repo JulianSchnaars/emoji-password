@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Mobile Authentication</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+
+    <script type="text/javascript" src="bower_components/zxcvbn/dist/zxcvbn.js"></script>
+</head>
+
+<body>
+    <div class="container" id="mobile">
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+                <form id="password-input" action="./php/send2.php" method="post" autocomplete="off">
+                    <!-- ##### INTRODUCTION ##### -->
+                    <section id="introduction" class="section">
+                        <h3>Introduction <small>(1/4)</small> </h3>
+                        <section>
+                            <hr>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris aliquet malesuada feugiat. Curabitur fermentum bibendum nulla, non dictum ipsum tincidunt non. Quisque convallis pharetra tempor. Donec id pretium leo. Pellentesque luctus massa non elit viverra pellentesque. Cras vitae neque molestie, rhoncus ipsum sit amet, lobortis dui. Fusce in urna sem. Vivamus vehicula dignissim augue et scelerisque. Etiam quam nisi, molestie ac dolor in, tincidunt tincidunt arcu. Praesent sed justo finibus, fringilla velit quis, porta erat. Donec blandit metus ut arcu iaculis iaculis. Cras nec dolor fringilla justo ullamcorper auctor. Aliquam eget pretium velit. Morbi urna justo, pulvinar id lobortis in, aliquet placerat orci.
+                            </p>
+                        </section>
+                        <a href="#password" class="next">
+                            <button type="button" class="btn btn-primary btn-lg btn-block">Start</button>
+                        </a>
+                    </section>
+                    <!-- ##### PASSWORD INPUT ##### -->
+                    <section id="password" class="section">
+                        <h3>Password <small>(2/4)</small></h3>
+                        <section>
+                            <hr>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris aliquet malesuada feugiat. Curabitur fermentum bibendum nulla, non dictum ipsum tincidunt non.
+                            </p>
+                            <p>Hinwei&szlig;: Emoji sind erlaubt.</p>
+                            <br>
+                            <div class="form-group noselect">
+                                <label for="password-1">Password:</label>
+                                <input type="text" unselectable="on" autocorrect="off" autocapitalize="off" spellcheck="false" class="form-control noselect" id="password-1" placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <label for="password-2">Confirm Password:</label>
+                                <input type="text" unselectable="on" autocorrect="off" autocapitalize="off" spellcheck="false" class="form-control" id="password-2" placeholder="Confirm Password">
+                            </div>
+                            <p class="help-block" id="help-text"></p>
+                            <!-- Hidden fields for password metadata -->
+                            <div class="hidden">
+                                <input type="text" name="pwGroup" id="password-group" placeholder="Group">
+                                <input type="text" name="pwLength" id="password-length" placeholder="Length">
+                                <input type="text" name="pwNumbers" id="password-numbers" placeholder="Numbers">
+                                <input type="text" name="pwLower" id="password-lower" placeholder="Letters Lower">
+                                <input type="text" name="pwUpper" id="password-upper" placeholder="Letters Upper">
+                                <input type="text" name="pwSpecial" id="password-special" placeholder="Special Characters">
+                                <input type="text" name="pwEmoji" id="password-emoji" placeholder="Emoji">
+                                <input type="text" name="pwScore" id="password-score" placeholder="Score">
+                                <input type="text" name="pwGuesses" id="password-guesses" placeholder="Guesses">
+                            </div>
+                            <!--<div class="checkbox">
+                    <label>
+                        <input type="checkbox"> Check me out
+                    </label>
+                </div>-->
+                            <p id="control"></p>
+                            <button type="button" class="btn btn-default" id="clear">Clear</button>
+                        </section>
+                        <a href="#questions" class="next">
+                            <button type="button" class="btn btn-primary btn-lg btn-block">Next</button>
+                        </a>
+                    </section>
+                    <!-- ##### QUESTIONNAIRE ##### -->
+                    <section id="questions" class="section">
+
+                        <div class="next">
+                            <button type="submit" class="btn btn-warning btn-lg btn-block" id="submit">Send</button>
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--###### Message for desktop browser #####-->
+    <div class="container hidden" id="desktop">
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3">
+                <h3>You seem to be on a desktop browser.</h3>
+                <p>This is a mobile study. Please come back on your smartphone or tablet.</p>
+                <p><strong>Just grab a mobile device and get back here fast by using this link:</strong>
+                    <button type="button" class="btn btn-default btn-lg"><a href="http://goo.gl/9WtXiO">goo.gl/9WtXiO</a></button>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.caret.js"></script>
+    <script src="js/password-input.js"></script>
+</body>
+
+</html>

@@ -1,8 +1,4 @@
-#password-input {}
-
-.password-value {}
-
-#password-input > input,
+/*#password-form > input,
 .noselect {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -10,28 +6,41 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-}
+}*/
 
-section {
+.section section {
     margin-bottom: 40px;
 }
+
+.section {
+    margin-top: 60px;
+    padding-bottom: 20px;
+}
+
+.section:first-of-type {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
 section > p {
     font-weight: 500;
 }
+
 form h3 {
-    margin-top: 50px;
+    margin-top: 0px;
+    padding-top: 30px;
 }
-form h3:first-child {
-    margin-top: 30px;
+
+.radio label {
+    padding-top: 3px;
+    padding-bottom: 3px;
 }
-input[type='radio'] {
-    -webkit-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    transform: scale(1.2);
-    width: 1em;
+
+.policy-error {
+    color: #A94442;
 }
 #desktop {
-    position:fixed;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -40,16 +49,30 @@ input[type='radio'] {
     margin-top: 200px;
     padding-top: 40px;
     padding-bottom: 40px;
-    background-color: rgba(200,200,200,.9);
+    background-color: rgba(200, 200, 200, .9);
 }
+
 #desktop p {
     margin-bottom: 20px;
 }
+
 #mobile {
     z-index: 1;
 }
+
 .half-opacity {
     opacity: .5;
     pointer-events: none;
-    -webkit-filter: blur(1px);filter: blur(1px);
+    /*-webkit-filter: blur(1px);filter: blur(1px);*/
+}
+
+.next {
+    height: 50px;
+}
+
+#submit {
+    margin-top: 100px;
+}
+h2 {
+    color: #286090;
 }

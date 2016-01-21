@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Thank You!</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container" id="mobile">
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+                <h2>Thank you for answering!</h2>
+                <h3>Your chance for winning a 20&euro;-Amazon coupon:</h3>
+                <p>Thank you for being a part of this study. If you want to <strong>win an Amazon coupon</strong> you need to enter you e-mail in the field below.</p>
+                <p>We will send you a reminder to come back for the second part of the survey in a few days.</p>
+                <p>For this (and only for this) we would like to ask you for your e-mail address.</p>
+                <br>
+
+                <form action="./php/mail.php" method="post">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" required>Ich will am Gewinnspiel teilnehmen. Ich bin damit einverstanden, dass meine E-Mail-Adresse bis zur Ziehung der Gewinner gespeichert wird. Meine Angaben in dieser Befragung bleiben weiterhin anonym, meine E-Mail-Adresse wird nicht an Dritte weitergegeben.
+                        </label>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="emailAddress">Email address:</label>
+                        <input type="email" name="emailAddress" class="form-control" id="emailAddress" placeholder="Email">
+                    </div>
+                    <div style="height:50px; margin-bottom: 40px;">
+                        <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                    </div>
+                </form>
+                <ul><small>
+                    <li>Teilnehmen können alle Personen, die das 18. Lebensjahr vollendet haben und einen Wohnsitz in Deutschland besitzen.</li>
+                    <li>Die Teilnahme läuft von 01.01.2000 bis 31.12.2099 23:59 Uhr.</li>
+                    <li>Die Teilnahme erfolgt durch hinterlassen der persönlichen Emailadresse.</li>
+                    <li>Die Gewinner werden durch ein Losverfahren ermittelt.</li>
+                    <li>Unter allen Teilnehmern werden XXX Gutscheine von www.amazon.de in Höhe von je 10€ verlost. Die Veranstalter des Gewinnspiels stehen in keinen Geschäftsbeziehungen zu Amazon.</li>
+                    <li>Die Gewinner/Gewinnerinnen werden umgehend per Email benachrichtigt. Sollte binnen 14 Tagen keine Rückmeldung erfolgen, verfällt der Gewinn ohne Ersatzausschüttung an andere Teilnehmer.</li>
+                    <li>Veranstalter des Gewinnspiels ist die Ludwig-Maximilians Universität München, repräsentiert durch Julian Schnaars (julian.schnaars@campus.lmu.de)</li>
+                    <li>Die Teilnehmerdaten werden nach der Ausschüttung gelöscht und nicht an Dritte weitergegeben. Weitere Datenschutzhinweise finden Sie unter http://www.medien.ifi.lmu.de/datenschutz.xhtml.de </li>
+                    <li>Die Teilnahme ist freiwillig und kann jederzeit durch eine formlose Email an den Veranstalter des Gewinnspiels widerrufen werden.</li>
+                    <li>Der Rechtsweg ist ausgeschlossen.</li>
+                </small></ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
