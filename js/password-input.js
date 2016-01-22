@@ -90,7 +90,7 @@ function setMetadata(password, passwordConfirm) {
 
 function clearPwds() {
     $('.password-input').val('');
-    $('.policy-error').removeClass('policy-error');
+    policyError.removeClass('policy-error');
     $('#password-2').closest('.form-group').removeClass('has-error');
 
     setMetadata([], []);
@@ -142,6 +142,7 @@ function isPrevented(e) {
 $(document).ready(function () {
     var password1 = $('#password-1');
     var password2 = $('#password-2');
+    var policyError = $('#policy-error');
     var realPassword = [];
     var realPasswordConfirm = [];
 
@@ -167,6 +168,12 @@ $(document).ready(function () {
             return false;
         } else if (event.which === 8) {
             //realPassword = remove(realPassword, caretPos);
+            password1.closest('.form-group').addClass('has-warning')
+                .delay(600)
+                .queue(function () {
+                    $(this).removeClass('has-warning');
+                    $(this).dequeue();
+                });
             realPassword = [];
             realPasswordConfirm = [];
             clearPwds();
@@ -174,7 +181,7 @@ $(document).ready(function () {
             realPassword = add('#password-1', realPassword, caretPos);
         }
         testOutput(realPassword, realPasswordConfirm, caretPos, event);
-        setMetadata(realPassword, realPasswordConfirm);
+        //setMetadata(realPassword, realPasswordConfirm);
         setPlaceholder('#password-1', realPassword, caretPos);
     });
 
@@ -186,6 +193,12 @@ $(document).ready(function () {
             event.returnValue = false; //IE
         } else if (event.which === 8) {
             //realPasswordConfirm = remove(realPasswordConfirm, caretPos);
+            password2.closest('.form-group').addClass('has-warning')
+                .delay(600)
+                .queue(function () {
+                    $(this).removeClass('has-warning');
+                    $(this).dequeue();
+                });
             realPassword = [];
             realPasswordConfirm = [];
             clearPwds();
@@ -205,14 +218,10 @@ $(document).ready(function () {
     });
 
     /* next button for sections */
-    $('#start').click(function () {
-        $('#password').removeClass('hidden');
-        $('#introduction').addClass('hidden');
-    });
-    $('#questionsNext').click(function () {
-        $('.policy-password').removeClass('policy-error');
-        password2.closest('.form-group').removeClass('has-error');
 
+    $('#questionsNext').click(function () {
+        policyError.removeClass('policy-error');
+        password2.closest('.form-group').removeClass('has-error');
         if (realPassword.length >= 8) {
             if (realPassword.join('') === realPasswordConfirm.join('')) {
                 $('#questions').removeClass('hidden');
@@ -223,8 +232,12 @@ $(document).ready(function () {
                 password2.closest('.form-group').addClass('has-error');
             }
         } else {
-            $('.policy-password').addClass('policy-error');
+            $('#policy-length').addClass('policy-error');
         }
+    });
+     $('#start').click(function () {
+        $('#password').removeClass('hidden');
+        $('#introduction').addClass('hidden');
     });
     $('#personalNext').click(function () {
         $('#personal').removeClass('hidden');

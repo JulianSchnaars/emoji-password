@@ -23,8 +23,7 @@
                         <h3>Introduction <small>(1/4)</small> </h3>
                         <section>
                             <hr>
-                            <p>Text-based password are still the main method of authentication. To be secure a password needs to have a certain length and a variation of different characters: Upper- and lowercase letters, numbers and special characters. This can result in a password somewhat like this: <code>kJs%5Lg?Nr</code>.</p>
-                            <p>The use of emoji can enhance the password space significantly, which makes creating a memorable password easier. E.g. <code>My🐶likes🍕&amp;🍔s</code>
+                            <p>We study the usability of passwords. In this survey, you will be asked to create a password. We are not going to store any personal data. However, please behave as naturally as possible, that means, please answer intuitively. There are no correct or wrong answers, that means there are no “good” and “bad” passwords. You should not use a password that you already use elsewhere, but one that you think is strong enough and that you could hypothetically remember easily.
                             </p>
                         </section>
                         <a href="#password" id="start" class="next">
@@ -38,17 +37,19 @@
                             <hr>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris aliquet malesuada feugiat. Curabitur fermentum bibendum nulla, non dictum ipsum tincidunt non.
                             </p>
+                            <p><strong>Please create a password that meets the following requirements:</strong></p>
                             <div class="group-0">
-                                <p><strong>Please do not use emoji in your password.</strong></p>
                                 <ul class="help-block">
-                                    <li class="policy-password">Password must be 8 characters or more</li>
+                                    <li id="policy-length">16 characters or more</li>
+                                    <li id="policy-letter">upper and lowercase letters</li>
+                                    <li id="policy-emoji">at least 1 special character</li>
                                 </ul>
                             </div>
                             <div class="group-1">
-                                <p id="emoji"><strong>Please use emoji in your password.</strong></p>
                                 <ul class="help-block">
-                                    <li class="policy-password">Password must be 8 characters or more</li>
-                                    <li class="policy-emoji">It must contain at least 1 emoji character</li>
+                                    <li id="policy-length">16 characters or more</li>
+                                    <li id="policy-letter">upper and lowercase letters</li>
+                                    <li id="policy-emoji">at least 1 emoji character</li>
                                 </ul>
                             </div>
                             <br>
