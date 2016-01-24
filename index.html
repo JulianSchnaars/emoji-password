@@ -42,6 +42,7 @@
                                 <ul class="help-block">
                                     <li class="policy-length">12 characters or more</li>
                                     <li class="policy-letter">upper and lowercase letters</li>
+                                    <li class="policy-numbers">1 number or more</li>
                                     <li class="policy-other">1 special character or more</li>
                                 </ul>
                             </div>
@@ -49,6 +50,7 @@
                                 <ul class="help-block">
                                     <li class="policy-length">12 characters or more</li>
                                     <li class="policy-letters">upper and lowercase letters</li>
+                                    <li class="policy-numbers">1 number or more</li>
                                     <li class="policy-other">1 emoji character or more</li>
                                 </ul>
                             </div>
@@ -383,20 +385,6 @@
                         </section>
                         <section>
                             <hr>
-                            <p>Please check it.</p>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="kindOfAltAuthenticationMobile" value="PIN" required> PIN
-                                </label>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="kindOfAltAuthenticationMobile" value="Fingerprint"> Fingerprint
-                                </label>
-                            </div>
-                        </section>
-                        <section>
-                            <hr>
                             <p>Do you prefer mobile or desktop login (the act of logging in not the application itself)?</p>
                             <div class="radio">
                                 <label>
@@ -419,18 +407,27 @@
                         <h3>Personal Information <small>(4/4)</small></h3>
                         <section>
                             <hr>
-                            <p>Gender</p>
+                            <p>What is you gender?</p>
                             <label class="radio-inline">
-                                <input type="radio" name="gender" value="male" required> male
+                                <input type="radio" name="gender" value="male" required> Male
                             </label>
                             <label class="radio-inline">
-                                <input type="radio" name="gender" value="female"> female
+                                <input type="radio" name="gender" value="female"> Female
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="gender" value="none"> I prefer not to answer.
                             </label>
                         </section>
                         <section>
                             <hr>
-                            <p>Age</p>
-                            <input type="number" name="age" class="form-control" placeholder="Your age" min="10" max="100" required>
+                            <p>How old are you?</p>
+                            <input type="number" name="age" class="form-control" placeholder="Your age" required>
+                        </section>
+                        <section>
+                            <div class="form-group">
+                                <label for="country">In which country do you live in?</label>
+                                <input type="text" name="country" class="form-control" required>
+                            </div>
                         </section>
                         <div class="next">
                             <button type="submit" class="btn btn-warning btn-lg btn-block" id="submit">Send</button>
@@ -456,7 +453,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="bower_components/zxcvbn/dist/zxcvbn.js"></script>
-    <script src="bower_components/emojione/lib/js/emojione.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.caret.js"></script>
     <script src="js/password-input.js"></script>

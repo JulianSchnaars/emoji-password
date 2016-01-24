@@ -160,7 +160,7 @@ $(document).ready(function () {
     //$('.noselect').disableSelection();
 
     /* key events in input field - password */
-    password1.bind('input keyup', function (event) {
+    password1.bind('keyup', function (event) {
         var caretPos = updateCaret(password1);
         if (isPrevented(event)) {
             event.preventDefault();
@@ -205,7 +205,7 @@ $(document).ready(function () {
             realPasswordConfirm = add('#password-2', realPasswordConfirm, caretPos);
         }
         testOutput(realPassword, realPasswordConfirm, caretPos, event);
-        setMetadata(realPassword, realPasswordConfirm);
+        //setMetadata(realPassword, realPasswordConfirm);
         setPlaceholder('#password-2', realPasswordConfirm, caretPos);
     });
 
@@ -223,30 +223,34 @@ $(document).ready(function () {
         password2.closest('.form-group').removeClass('has-error');
 
         if (realPassword.length >= 12) { // 1. min length of 12
-            if (realPassword.join('') === realPasswordConfirm.join('')) { // passwords match and length > 16
+            if (realPassword.join('') === realPasswordConfirm.join('')) { // passwords match
                 var passwordString = realPassword.join('');
-
                 var pwUpperCase = passwordString.replace(/[^a-zäöü]/g, '').length;
                 var pwLowerCase = passwordString.replace(/[^A-ZÄÖÜ]/g, '').length;
                 if (pwUpperCase > 0 && pwLowerCase > 0) { // 2. check for upper and lower case
-                    if (group === 1) { //check if emoji group
-                        var pwEmojis = passwordString.replace(/[^\uDE00-\uDFFF]/g, '').length;
-                        if (pwEmojis > 0) { // 3. check for emoji
-                            $('#questions').removeClass('hidden');
-                            //$('#password').addClass('hidden');
-                            setMetadata(realPassword, realPasswordConfirm);
-                        } else {
-                            $('.policy-other').addClass('policy-error');
+                    var pwNumbers = passwordString.replace(/\D/g, '').length; // check for numbers
+                    if (pwNumbers > 0) {
+                        if (group === 1) { //check if emoji group
+                            var pwEmojis = passwordString.replace(/[^\uDE00-\uDFFF]/g, '').length;
+                            if (pwEmojis > 0) { // 3. check for emoji
+                                $('#questions').removeClass('hidden');
+                                //$('#password').addClass('hidden');
+                                setMetadata(realPassword, realPasswordConfirm);
+                            } else {
+                                $('.policy-other').addClass('policy-error');
+                            }
+                        } else { // special character
+                            var pwSpecialChars = passwordString.replace(/[^~`!#$%\^&*+=\-\[\]\\';,§/{}()|\\":.<>\?]/g, '').length;
+                            if (pwSpecialChars > 0) { // check for special characters
+                                $('#questions').removeClass('hidden');
+                                //$('#password').addClass('hidden');
+                                setMetadata(realPassword, realPasswordConfirm);
+                            } else {
+                                $('.policy-other').addClass('policy-error');
+                            }
                         }
-                    } else { // special character
-                        var pwSpecialChars = passwordString.replace(/[^~`!#$%\^&*+=\-\[\]\\';,§/{}()|\\":.<>\?]/g, '').length;
-                        if (pwSpecialChars > 0) { // check for special characters
-                            $('#questions').removeClass('hidden');
-                            //$('#password').addClass('hidden');
-                            setMetadata(realPassword, realPasswordConfirm);
-                        } else {
-                            $('.policy-other').addClass('policy-error');
-                        }
+                    } else {
+                        $('.policy-numbers').addClass('policy-error');
                     }
                 } else {
                     $('.policy-letters').addClass('policy-error');
