@@ -23,8 +23,9 @@
                         <h3>Introduction <small>(1/4)</small> </h3>
                         <section>
                             <hr>
-                            <p>We study the usability of passwords. In this survey, you will be asked to create a password. We are not going to store any personal data. However, please behave as naturally as possible, that means, please answer intuitively. There are no correct or wrong answers, that means there are no “good” and “bad” passwords. You should not use a password that you already use elsewhere, but one that you think is strong enough and that you could hypothetically remember easily.
-                            </p>
+                            <p>We study the usability of passwords. In this survey, you will be asked to create a password. Please behave as naturally as possible, that means, please answer intuitively. There are no correct or wrong answers, that means there are no “good” and “bad” passwords. We are not going to store any personal data.</p>
+                            <p>You should not use a password that you already use elsewhere, simply behave as if you were asked to choose a new password for your primary email account. </p>
+                            <p>We will not store your password on our server. We will only collect some meta-information such as the length or use of special characters.</p>
                         </section>
                         <a href="#password" id="start" class="next">
                             <button type="button" class="btn btn-primary btn-lg btn-block">Start</button>
@@ -35,8 +36,7 @@
                         <h3>Password <small>(2/4)</small></h3>
                         <section>
                             <hr>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris aliquet malesuada feugiat. Curabitur fermentum bibendum nulla, non dictum ipsum tincidunt non.
-                            </p>
+                            <p>Imagine you had to change the password for your primary email account.</p>
                             <p><strong>Please create a password that meets the following requirements:</strong></p>
                             <div class="group-0">
                                 <ul class="help-block">
@@ -93,11 +93,13 @@
                         </a>
                     </section>
                     <!-- ##### QUESTIONNAIRE ##### -->
-                    <section id="questions" class="section hidden">
+                    <section id="questions" class="section">
                         <h3>Questionnaire <small>(3/4)</small></h3>
+                        <hr>
+                        <p><strong>What can you say about the password you just created?</strong></p>
                         <section>
                             <hr>
-                            <p>Learning my password was annoying?</p>
+                            <p>Choosing my password was annoying?</p>
                             <div class="radio">
                                 <label>
                                     <input type="radio" name="learningPasswordAnnoying" value="Strongly agree" required> Strongly agree
@@ -126,7 +128,7 @@
                         </section>
                         <section>
                             <hr>
-                            <p>Learning my password was difficult?</p>
+                            <p>Choosing my password was difficult?</p>
                             <div class="radio">
                                 <label>
                                     <input type="radio" name="learningPasswordDifficult" value="Strongly agree" required> Strongly agree
@@ -155,7 +157,7 @@
                         </section>
                         <section>
                             <hr>
-                            <p>Learning my password was fun?</p>
+                            <p>Choosing my password was fun?</p>
                             <div class="radio">
                                 <label>
                                     <input type="radio" name="learningPasswordFun" value="Strongly agree" required> Strongly agree
@@ -220,20 +222,6 @@
                                 </label>
                             </div>
                         </section>
-                        <!--<section>
-                            <hr>
-                            <p>Do you have an email password?</p>
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="emailPassword" value="Yes" required> Yes
-                                </label>
-                            </div>
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="emailPassword" value="No"> No
-                                </label>
-                            </div>
-                        </section>-->
                         <hr>
                         <p><strong>The following questions pertain to your real email password.</strong></p>
                         <section>
@@ -403,7 +391,7 @@
                         </a>
                     </section>
                     <!-- ##### PERSONAL INFORMATION ##### -->
-                    <section id="personal" class="section hidden">
+                    <section id="personal" class="section">
                         <h3>Personal Information <small>(4/4)</small></h3>
                         <section>
                             <hr>
@@ -424,11 +412,11 @@
                             <input type="number" name="age" class="form-control" placeholder="Your age" required>
                         </section>
                         <section>
-                            <div class="form-group">
-                                <label for="country">In which country do you live in?</label>
-                                <input type="text" name="country" class="form-control" required>
-                            </div>
+                            <hr>
+                            <p>In which country do you live in?</p>
+                            <input type="number" name="nrAccounts" class="form-control" placeholder="Your country" required>
                         </section>
+
                         <div class="next">
                             <button type="submit" class="btn btn-warning btn-lg btn-block" id="submit">Send</button>
                         </div>

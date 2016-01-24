@@ -61,8 +61,8 @@ function initGroup() {
     return group;
 }
 
-function testOutput(password, passwordConfirm, pos, e) {
-    $('#control').html('Caret: ' + pos + '<br> Password: ' + password.join(' ') + '<br>Length: ' + password.length + '<br> Password Confirm: ' + passwordConfirm.join(' ') + '<br>e.which: ' + e.which);
+function testOutput(password, passwordConfirm, pos, key) {
+    $('#control').html('Caret: ' + pos + '<br> Password: ' + password.join(' ') + '<br>Length: ' + password.length + '<br> Password Confirm: ' + passwordConfirm.join(' ') + '<br>e.which: ' + key);
 }
 
 function setMetadata(password, passwordConfirm) {
@@ -100,8 +100,8 @@ function updateCaret(field) {
     return field.caret();
 }
 
-function add(field, password, pos) {
-    var key = $(field).val().replace(/•/g, '');
+function add(passwordField, password, pos) {
+    var key = passwordField.val().replace(/•/g, '');
     password.splice(pos - 1, 0, key);
     return password;
 }
@@ -111,7 +111,18 @@ function remove(password, pos) {
     return password;
 }
 
-function setPlaceholder(fieldID, password, pos) {
+function removeAll(passwordField) {
+    passwordField.closest('.form-group').addClass('has-warning')
+        .delay(600)
+        .queue(function () {
+            $(this).removeClass('has-warning');
+            $(this).dequeue();
+        });
+    passwordField.val('');
+    return [];
+}
+
+function setPlaceholder(passwordField, password, pos) {
     //var length = $('#password-real').val().length;
     var length = password.length;
     var placeholder = '';
@@ -121,9 +132,9 @@ function setPlaceholder(fieldID, password, pos) {
     } else {
         placeholder = Array(length + 1).join('•');
     }
-    $(fieldID).val('');
-    $(fieldID).val(placeholder);
-    $(fieldID).caret(pos);
+    passwordField.val('');
+    passwordField.val(placeholder);
+    passwordField.caret(pos);
 }
 
 function notMobileWarning() {
@@ -132,9 +143,8 @@ function notMobileWarning() {
     //alert("This is not a mobile device");
 }
 
-function isPrevented(e) {
+function isPrevented(key) {
     // return true if key event default should be prevented
-    var key = e.keyCode || e.which;
     // values for: left, right, up, down, shift, cmd, ctr, alt, space, enter, caps, tab, insert
     return (key === 37 || key === 38 || key === 39 || key === 40 || key === 16 || key === 91 || key === 17 || key === 18 || key === 32 || key === 13 || key === 20 || key === 9 || key === 45);
 }
@@ -161,52 +171,39 @@ $(document).ready(function () {
 
     /* key events in input field - password */
     password1.bind('keyup', function (event) {
+        var key = event.keyCode || event.which;
         var caretPos = updateCaret(password1);
-        if (isPrevented(event)) {
+
+        if (isPrevented(key)) {
             event.preventDefault();
             return false;
         } else if (event.which === 8) {
             //realPassword = remove(realPassword, caretPos);
-            password1.closest('.form-group').addClass('has-warning')
-                .delay(600)
-                .queue(function () {
-                    $(this).removeClass('has-warning');
-                    $(this).dequeue();
-                });
-            realPassword = [];
-            realPasswordConfirm = [];
-            clearPwds();
+            realPassword = removeAll(password1);
         } else {
-            realPassword = add('#password-1', realPassword, caretPos);
+            realPassword = add(password1, realPassword, caretPos);
         }
-        testOutput(realPassword, realPasswordConfirm, caretPos, event);
+        testOutput(realPassword, realPasswordConfirm, caretPos, key);
         //setMetadata(realPassword, realPasswordConfirm);
-        setPlaceholder('#password-1', realPassword, caretPos);
+        setPlaceholder(password1, realPassword, caretPos);
     });
 
     /* key events in input field - confirm password */
     password2.bind('keyup', function (event) {
+        var key = event.keyCode || event.which;
         var caretPos = updateCaret(password2);
-        if (isPrevented(event)) {
+        if (isPrevented(key)) {
             if (event.preventDefault) event.preventDefault(); //normal browsers
             event.returnValue = false; //IE
         } else if (event.which === 8) {
             //realPasswordConfirm = remove(realPasswordConfirm, caretPos);
-            password2.closest('.form-group').addClass('has-warning')
-                .delay(600)
-                .queue(function () {
-                    $(this).removeClass('has-warning');
-                    $(this).dequeue();
-                });
-            realPassword = [];
-            realPasswordConfirm = [];
-            clearPwds();
+            realPasswordConfirm = removeAll(password2);
         } else {
-            realPasswordConfirm = add('#password-2', realPasswordConfirm, caretPos);
+            realPasswordConfirm = add(password2, realPasswordConfirm, caretPos);
         }
-        testOutput(realPassword, realPasswordConfirm, caretPos, event);
+        testOutput(realPassword, realPasswordConfirm, caretPos, key);
         //setMetadata(realPassword, realPasswordConfirm);
-        setPlaceholder('#password-2', realPasswordConfirm, caretPos);
+        setPlaceholder(password2, realPasswordConfirm, caretPos);
     });
 
     /* button for clearing password fields */
