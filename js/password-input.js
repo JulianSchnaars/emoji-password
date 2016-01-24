@@ -4,7 +4,7 @@
 /*(function () {
     var pwField = $('#password-1');
 })();*/
-
+var regExSpecial = /[^~`!#@\$%\^&*+=\-\[\]\\';,§\/{}()|\\":.<>\?≠¿¡“¶¢‘±œπæ–…∞µ~∫√ç≈¥å‚∂ƒ©ªº]/g;
 
 // This jQuery Plugin will disable text selection for Android and iOS devices.
 // Stackoverflow Answer: http://stackoverflow.com/a/2723677/1195891
@@ -52,7 +52,7 @@ function initGroup() {
     //var group = Math.floor(Math.random() * 2);
     var group = 1;
     $('#password-group').val(group);
-    if (group == 0) {
+    if (group === 0) {
         $('.group-1').addClass('hidden');
         $('#password-1').prop('type', 'password');
     } else {
@@ -80,7 +80,7 @@ function setMetadata(password, passwordConfirm) {
     $('#password-numbers').val(passwordString.replace(/\D/g, '').length);
     $('#password-lower').val((passwordString.replace(/[^a-zäöü]/g, '').length).toString());
     $('#password-upper').val((passwordString.replace(/[^A-ZÄÖÜ]/g, '').length).toString());
-    $('#password-special').val((passwordString.replace(/[^~`!#$%\^&*+=\-\[\]\\';,§/{}()|\\":.<>\?]/g, '').length).toString());
+    $('#password-special').val((passwordString.replace(regExSpecial, '').length).toString());
     $('#password-emojiNr').val(emoji.length);
     $('#password-emoji').val(emojiOutput);
     $('#password-score').val(result.score);
@@ -237,7 +237,7 @@ $(document).ready(function () {
                                 $('.policy-other').addClass('policy-error');
                             }
                         } else { // special character
-                            var pwSpecialChars = passwordString.replace(/[^~`!#$%\^&*+=\-\[\]\\';,§/{}()|\\":.<>\?]/g, '').length;
+                            var pwSpecialChars = passwordString.replace(regExSpecial, '').length;
                             if (pwSpecialChars > 0) { // check for special characters
                                 $('#questions').removeClass('hidden');
                                 //$('#password').addClass('hidden');
