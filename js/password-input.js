@@ -80,7 +80,7 @@ function setMetadata(password, passwordConfirm) {
     $('#password-numbers').val(passwordString.replace(/\D/g, '').length);
     $('#password-lower').val((passwordString.replace(/[^a-zäöü]/g, '').length).toString());
     $('#password-upper').val((passwordString.replace(/[^A-ZÄÖÜ]/g, '').length).toString());
-    $('#password-special').val((passwordString.length - passwordString.replace(/[~`!#$%\^&*+=\-\[\]\\';,§/{}()|\\":.<>\?]/g, '').length).toString());
+    $('#password-special').val((passwordString.replace(/[^~`!#$%\^&*+=\-\[\]\\';,§/{}()|\\":.<>\?]/g, '').length).toString());
     $('#password-emojiNr').val(emoji.length);
     $('#password-emoji').val(emojiOutput);
     $('#password-score').val(result.score);
@@ -90,7 +90,7 @@ function setMetadata(password, passwordConfirm) {
 
 function clearPwds() {
     $('.password-input').val('');
-    policyError.removeClass('policy-error');
+    $('.policy-error').removeClass('policy-error');
     $('#password-2').closest('.form-group').removeClass('has-error');
 
     setMetadata([], []);
@@ -142,7 +142,6 @@ function isPrevented(e) {
 $(document).ready(function () {
     var password1 = $('#password-1');
     var password2 = $('#password-2');
-    var policyError = $('#policy-error');
     var realPassword = [];
     var realPasswordConfirm = [];
 
@@ -161,7 +160,7 @@ $(document).ready(function () {
     //$('.noselect').disableSelection();
 
     /* key events in input field - password */
-    password1.bind('keyup', function (event) {
+    password1.bind('input keyup', function (event) {
         var caretPos = updateCaret(password1);
         if (isPrevented(event)) {
             event.preventDefault();
@@ -218,24 +217,49 @@ $(document).ready(function () {
     });
 
     /* next button for sections */
-
     $('#questionsNext').click(function () {
+        var policyError = $('.policy-error');
         policyError.removeClass('policy-error');
         password2.closest('.form-group').removeClass('has-error');
-        if (realPassword.length >= 8) {
-            if (realPassword.join('') === realPasswordConfirm.join('')) {
-                $('#questions').removeClass('hidden');
-                //$('#password').addClass('hidden');
-                setMetadata(realPassword, realPasswordConfirm);
-            } else {
+
+        if (realPassword.length >= 12) { // 1. min length of 12
+            if (realPassword.join('') === realPasswordConfirm.join('')) { // passwords match and length > 16
+                var passwordString = realPassword.join('');
+
+                var pwUpperCase = passwordString.replace(/[^a-zäöü]/g, '').length;
+                var pwLowerCase = passwordString.replace(/[^A-ZÄÖÜ]/g, '').length;
+                if (pwUpperCase > 0 && pwLowerCase > 0) { // 2. check for upper and lower case
+                    if (group === 1) { //check if emoji group
+                        var pwEmojis = passwordString.replace(/[^\uDE00-\uDFFF]/g, '').length;
+                        if (pwEmojis > 0) { // 3. check for emoji
+                            $('#questions').removeClass('hidden');
+                            //$('#password').addClass('hidden');
+                            setMetadata(realPassword, realPasswordConfirm);
+                        } else {
+                            $('.policy-other').addClass('policy-error');
+                        }
+                    } else { // special character
+                        var pwSpecialChars = passwordString.replace(/[^~`!#$%\^&*+=\-\[\]\\';,§/{}()|\\":.<>\?]/g, '').length;
+                        if (pwSpecialChars > 0) { // check for special characters
+                            $('#questions').removeClass('hidden');
+                            //$('#password').addClass('hidden');
+                            setMetadata(realPassword, realPasswordConfirm);
+                        } else {
+                            $('.policy-other').addClass('policy-error');
+                        }
+                    }
+                } else {
+                    $('.policy-letters').addClass('policy-error');
+                }
+            } else { // password do not match
                 alert('Please check if your passwords match.');
                 password2.closest('.form-group').addClass('has-error');
             }
         } else {
-            $('#policy-length').addClass('policy-error');
+            $('.policy-length').addClass('policy-error');
         }
     });
-     $('#start').click(function () {
+    $('#start').click(function () {
         $('#password').removeClass('hidden');
         $('#introduction').addClass('hidden');
     });
