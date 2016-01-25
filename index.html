@@ -23,9 +23,9 @@
                         <h3>Introduction <small>(1/4)</small> </h3>
                         <section>
                             <hr>
-                            <p>We study the usability of passwords. In this survey, you will be asked to create a password. Please behave as naturally as possible, that means, please answer intuitively. There are no correct or wrong answers, that means there are no “good” and “bad” passwords. We are not going to store any personal data.</p>
+                            <p>We study the usability of passwords. In this survey, you will be asked to create a password. Please behave as naturally as possible, that means, please answer intuitively. There are no correct or wrong answers; there are no “good” and “bad” passwords.</p>
                             <p>You should not use a password that you already use elsewhere, simply behave as if you were asked to choose a new password for your primary email account. </p>
-                            <p>We will not store your password on our server. We will only collect some meta-information such as the length or use of special characters.</p>
+                            <p>We will not store any data that can be traced back to you. Neither will we store your password. We are only going to collect some meta-information, e.g. the length of your password or the number of special characters it contains.</p>
                         </section>
                         <a href="#password" id="start" class="next">
                             <button type="button" class="btn btn-primary btn-lg btn-block">Start</button>
@@ -36,7 +36,8 @@
                         <h3>Password <small>(2/4)</small></h3>
                         <section>
                             <hr>
-                            <p style="margin-bottom:20px;">Imagine you had to change the password for your primary email account.<br><small>(Note: If you have trouble with the password field, please use Google Chrome)</small></p>
+                            <p style="margin-bottom:20px;">Imagine you had to change the password for your primary email account.
+                                <br><small>(Note: If you have trouble with the password field, please use Google Chrome)</small></p>
                             <p><strong>Please create a password that meets the following requirements:</strong></p>
                             <div class="group-0">
                                 <ul class="help-block">
@@ -51,7 +52,7 @@
                                     <li class="policy-length">12 characters or more</li>
                                     <li class="policy-letters">upper and lowercase letters</li>
                                     <li class="policy-numbers">1 number or more</li>
-                                    <li class="policy-other">1 emoji character or more</li>
+                                    <li class="policy-other">1 <abbr title="HyperText Markup Language" class="initialism">emoji</abbr> character or more</li>
                                 </ul>
                             </div>
                             <div class="form-group" style="margin-top:20px;">
@@ -91,7 +92,7 @@
                         </a>
                     </section>
                     <!-- ##### QUESTIONNAIRE ##### -->
-                    <section id="questions" class="section hidden">
+                    <section id="questions" class="section ">
                         <h3>Questionnaire <small>(3/4)</small></h3>
                         <hr>
                         <p><strong>What can you say about the password you just created?</strong></p>
@@ -371,15 +372,20 @@
                         </section>
                         <section>
                             <hr>
-                            <p>Do you prefer mobile or desktop login (the act of logging in not the application itself)?</p>
+                            <p>How would you compare the act of logging in on different devices?</p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="desktopVsMobile" value="Desktop" required> Desktop
+                                    <input type="radio" name="desktopVsMobile" value="Desktop" required> Easier on a computer
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="desktopVsMobile" value="Mobile"> Mobile
+                                    <input type="radio" name="desktopVsMobile" value="Neutral"> About the same
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="desktopVsMobile" value="Mobile"> Easier on a smartphone
                                 </label>
                             </div>
                         </section>
@@ -471,15 +477,21 @@
                         <section>
                             <hr>
                             <p>What is you gender?</p>
-                            <label class="radio-inline">
-                                <input type="radio" name="gender" value="male" required> Male
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="gender" value="female"> Female
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="gender" value="none"> I prefer not to answer.
-                            </label>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="gender" value="male" required> Male
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="gender" value="female"> Female
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="gender" value="none"> I prefer not to answer.
+                                </label>
+                            </div>
                         </section>
                         <section>
                             <hr>
@@ -488,7 +500,7 @@
                         </section>
                         <section>
                             <hr>
-                            <p>In which country do you live in?</p>
+                            <p>Which country do you live in?</p>
                             <input type="text" name="country" class="form-control" placeholder="Your country" required>
                         </section>
 
