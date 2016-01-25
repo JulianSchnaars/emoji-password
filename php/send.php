@@ -7,6 +7,11 @@ include('connection.php');
 $valIP = $_SERVER['REMOTE_ADDR'];
 $valBrowser = $_SERVER['HTTP_USER_AGENT'];
 
+/* personal information */
+$valGender = $_POST['gender'];
+$valAge = (int)$_POST['age'];
+$valCountry = $_POST['country'];
+
 /* password meta-data */
 $valGroup = (int)$_POST['pwGroup'];
 $valLength = (int)$_POST['pwLength'];
@@ -42,19 +47,36 @@ $valFewSpecialCharacters = $_POST['fewSpecialCharacters'];
 $valEmojiVsSpecial = $_POST['emojiVsSpecial'];
 $valEmojiUseGeneral = $_POST['emojiUseGeneral'];
 
-/* personal information */
-$valGender = $_POST['gender'];
-$valAge = (int)$_POST['age'];
-$valCountry = $_POST['country'];
+$sql = "INSERT INTO `survey_1`(
+`IP`,`browser`,`testGroup`,
+`gender`,`age`,`country`,
+`pwLength`,`pwNumbers`,`pwLower`,`pwUpper`,`pwSpecial`,`pwEmojiNr`, `pwEmoji`, `pwScore`, `pwGuesses`, `pwHash`,
+`choosingPasswordAnnoying`, `choosingPasswordDifficult`, `choosingPasswordFun`,
+`passwordReuse`, `passwordReuseSlightModification`,
+`realPwUpper`, `realPwLower`, `realPwNumbers`, `realPwSpecial`,
+`isMoreSecure`, `isAnnoying`, `isEasier`,
+`nrAccounts`, `nrAccountsMobile`, `altAuthenticationMobile`,
+`desktopVsMobile`,
+`fewSpecialCharacters`,
+`emojiVsSpecial`, `emojiUseGeneral`)
+VALUES(
+'$valIP','$valBrowser',$valGroup,
+'$valGender',$valAge,'$valCountry',
+$valLength,$valNumbers,$valLower,$valUpper,$valSpecial,$valEmojiNr,'$valEmoji',$valScore,$valGuesses,'$valHash',
+'$valChoosingPasswordAnnoying','$valChoosingPasswordDifficult','$valChoosingPasswordFun',
+'$valPasswordReuse','$valPasswordReuseSlightModification',
+$valRealPwUpper,$valRealPwLower,$valRealPwNumbers,$valRealPwSpecial,
+'$valIsMoreSecure','$valIsAnnoying','$valIsEasier',
+$valNrAccounts,$valNrAccountsMobile,'$valAltAuthenticationMobile',
+'$valDesktopVsMobile',
+'$valFewSpecialCharacters',
+'$valEmojiVsSpecial','$valEmojiUseGeneral'
+)";
 
-$sql = "INSERT INTO `survey_1`(`IP`,`browser`,`testGroup`, `gender`, `age`, `country`, `pwLength`, `pwNumbers`, `pwLower`, `pwUpper`, `pwSpecial`, `pwEmojiNr`, `pwEmoji`, `pwScore`, `pwGuesses`, `pwHash`, `choosingPasswordAnnoying`, `choosingPasswordDifficult`, `choosingPasswordFun`, `passwordReuse`, `passwordReuseSlightModification`, `realPwUpper`, `realPwLower`, `realPwNumbers`, `realPwSpecial`, `isMoreSecure`, `isAnnoying`, `isEasier`, `nrAccounts`, `nrAccountsMobile`, `altAuthenticationMobile`, `desktopVsMobile`, `fewSpecialCharacters`, `emojiVsSpecial`, `emojiUseGeneral`) VALUES ('$valIP','$valBrowser',$valGroup,'$valGender',$valAge,'$valCountry',$valLength,$valNumbers,$valLower,$valUpper,$valSpecial,$valEmojiNr,'$valEmoji',$valScore,$valGuesses,'$valHash','$valChoosingPasswordAnnoying','$valChoosingPasswordDifficult','$valChoosingPasswordFun','$valPasswordReuse','$valPasswordReuseSlightModification',$valRealPwUpper,$valRealPwLower,$valRealPwNumbers,$valRealPwSpecial,'$valIsMoreSecure','$valIsAnnoying','$valIsEasier',$valNrAccounts,$valNrAccountsMobile,'$valAltAuthenticationMobile','$valDesktopVsMobile','$valFewSpecialCharacters','$valEmojiVsSpecial','$valEmojiUseGeneral')";
-
-if ($conn->query($sql) === TRUE) {
+if ($conn->query($sql) === true) {
     echo "New record created successfully<br>";
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
 $conn->close();
-
-?>
