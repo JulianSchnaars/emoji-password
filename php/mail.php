@@ -7,12 +7,10 @@ $valEmail = $_POST['emailAddress'];
 
 $sql2 = "INSERT INTO `email_addresses`(`email`) VALUES ('$valEmail')";
 
-if ($conn->query($sql2) === TRUE) {
+if ($conn->query($sql2) === true) {
     echo "New record created successfully<br>";
 } else {
     echo "Error: " . $sql2 . "<br>" . $conn->error;
 }
 
 $conn->close();
-
-?>

@@ -1,13 +1,9 @@
 <?php
-//header("Location: ../email.html");
 
-include('connection.php');
-
-/* meta-data */
-$valIP = $_SERVER['REMOTE_ADDR'];
-$valBrowser = $_SERVER['HTTP_USER_AGENT'];
+$valPassword = $_POST['pwReal'];
 
 /* personal information */
+$valBrowser = $_SERVER['HTTP_USER_AGENT'];
 $valGender = $_POST['gender'];
 $valAge = (int)$_POST['age'];
 $valCountry = $_POST['country'];
@@ -23,7 +19,7 @@ $valEmojiNr = (int)$_POST['pwEmojiNr'];
 $valEmoji = $_POST['pwEmoji'];
 $valScore = (int)$_POST['pwScore'];
 $valGuesses = (int)$_POST['pwGuesses'];
-$valHash = md5($_POST['pwReal']);
+$valHash = md5($valPassword);
 
 /* questionnaire */
 $valChoosingPasswordAnnoying = $_POST['choosingPasswordAnnoying'];
@@ -48,7 +44,7 @@ $valEmojiVsSpecial = $_POST['emojiVsSpecial'];
 $valEmojiUseGeneral = $_POST['emojiUseGeneral'];
 
 $sql = "INSERT INTO `survey_1`(
-`IP`,`browser`,`testGroup`,
+`browser`,`testGroup`,
 `gender`,`age`,`country`,
 `pwLength`,`pwNumbers`,`pwLower`,`pwUpper`,`pwSpecial`,`pwEmojiNr`, `pwEmoji`, `pwScore`, `pwGuesses`, `pwHash`,
 `choosingPasswordAnnoying`, `choosingPasswordDifficult`, `choosingPasswordFun`,
@@ -60,7 +56,7 @@ $sql = "INSERT INTO `survey_1`(
 `fewSpecialCharacters`,
 `emojiVsSpecial`, `emojiUseGeneral`)
 VALUES(
-'$valIP','$valBrowser',$valGroup,
+'$valBrowser',$valGroup,
 '$valGender',$valAge,'$valCountry',
 $valLength,$valNumbers,$valLower,$valUpper,$valSpecial,$valEmojiNr,'$valEmoji',$valScore,$valGuesses,'$valHash',
 '$valChoosingPasswordAnnoying','$valChoosingPasswordDifficult','$valChoosingPasswordFun',
@@ -73,10 +69,24 @@ $valNrAccounts,$valNrAccountsMobile,'$valAltAuthenticationMobile',
 '$valEmojiVsSpecial','$valEmojiUseGeneral'
 )";
 
-if ($conn->query($sql) === true) {
-    echo "New record created successfully<br>";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
 
-$conn->close();
+if (!isset($_COOKIE['emojiPassword'])) {
+    /* ##### set cookie #####*/
+    $expires = time()+60*60*24*30;  // 30 days
+    setcookie('emojiPassword', $valPassword, $expires, '/');
+    echo "cookie set <br>";
+
+    //header("Location: ../email.html");
+
+    /*##### make connection #####*/
+    include('connection.php');
+
+    if ($conn->query($sql) === true) {
+        echo "New record created successfully<br>";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+    $conn->close();
+} else {
+    //header("Location: ../index.html");
+}

@@ -11,8 +11,7 @@ $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-mysqli_set_charset($conn,"utf8"); //utf8mb4
+
+mysqli_set_charset($conn, "utf8"); //utf8mb4
 
 echo 'Connected successfully<br>';
-
-?>

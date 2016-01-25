@@ -40,12 +40,10 @@ $valAge = (int)$_POST['age'];
 
 $sql = "INSERT INTO `survey_1`(`testGroup`, `gender`, `age`, `pwLength`, `pwNumbers`, `pwLower`, `pwUpper`, `pwSpecial`, `pwEmoji`, `pwScore`, `pwGuesses`, `choosingPasswordAnnoying`, `choosingPasswordDifficult`, `choosingPasswordFun`, `passwordReuse`, `passwordReuseSlightModification`, `realPwUpper`, `realPwLower`, `realPwNumbers`, `realPwSpecial`, `isMoreSecure`, `isAnnoying`, `isEasier`, `nrAccounts`, `nrAccountsMobile`, `altAuthenticationMobile`, `desktopVsMobile`) VALUES ($valGroup,'$valGender',$valAge,$valLength,$valNumbers,$valLower,$valUpper,$valSpecial,$valEmoji,$valScore,$valGuesses,'$valchoosingPasswordAnnoying','$valchoosingPasswordDifficult','$valchoosingPasswordFun','$valPasswordReuse','$valPasswordReuseSlightModification',$valRealPwUpper,$valRealPwLower,$valRealPwNumbers,$valRealPwSpecial,'$valIsMoreSecure','$valIsAnnoying','$valIsEasier',$valNrAccounts,$valNrAccountsMobile,'$valAltAuthenticationMobile','$valDesktopVsMobile')";
 
-if ($conn->query($sql) === TRUE) {
+if ($conn->query($sql) === true) {
     echo "New record created successfully<br>";
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
 $conn->close();
-
-?>
