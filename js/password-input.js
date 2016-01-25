@@ -52,10 +52,10 @@ function initGroup() {
     var group = Math.floor(Math.random() * 2);
     //var group = 0;
     $('#password-group').val(group);
-    if (group === 0) {
+    if (group === 0) { // no emoji
         $('.group-1').addClass('hidden');
         $('#password-1').prop('type', 'password');
-    } else {
+    } else { // emoji
         $('.group-0').addClass('hidden');
     }
     return group;
@@ -164,7 +164,7 @@ $(document).ready(function () {
 
     /* check if mobile */
     if (isNotMobile.any()) {
-        notMobileWarning();
+        //notMobileWarning();
     }
     /* disable selection in input field */
     //$('.noselect').disableSelection();
@@ -183,7 +183,7 @@ $(document).ready(function () {
         } else {
             realPassword = add(password1, realPassword, caretPos);
         }
-        testOutput(realPassword, realPasswordConfirm, caretPos, key);
+        //testOutput(realPassword, realPasswordConfirm, caretPos, key);
         //setMetadata(realPassword, realPasswordConfirm);
         setPlaceholder(password1, realPassword, caretPos);
     });
@@ -201,7 +201,7 @@ $(document).ready(function () {
         } else {
             realPasswordConfirm = add(password2, realPasswordConfirm, caretPos);
         }
-        testOutput(realPassword, realPasswordConfirm, caretPos, key);
+        //testOutput(realPassword, realPasswordConfirm, caretPos, key);
         //setMetadata(realPassword, realPasswordConfirm);
         setPlaceholder(password2, realPasswordConfirm, caretPos);
     });
