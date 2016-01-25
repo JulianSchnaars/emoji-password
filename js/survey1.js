@@ -186,8 +186,8 @@ $(document).ready(function () {
         } else {
             realPassword = add(password1, realPassword, caretPos);
         }
-        testOutput(realPassword, realPasswordConfirm, caretPos, key);
-        setMetadata(realPassword, realPasswordConfirm);
+        //testOutput(realPassword, realPasswordConfirm, caretPos, key);
+        //setMetadata(realPassword, realPasswordConfirm);
         setPlaceholder(password1, realPassword, caretPos);
     });
 

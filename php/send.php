@@ -72,8 +72,9 @@ $valNrAccounts,$valNrAccountsMobile,'$valAltAuthenticationMobile',
 
 if (!isset($_COOKIE['emojiPassword'])) {
     /* ##### set cookie #####*/
-    $expires = time()+60*60*24*30;  // 30 days
+    $expires = time()+60*60*24*40;  // 40 days
     setcookie('emojiPassword', $valPassword, $expires, '/');
+    setcookie('emojiPasswordGroup', $valGroup, $expires, '/');
     echo "cookie set <br>";
 
     //header("Location: ../email.html");
@@ -88,5 +89,6 @@ if (!isset($_COOKIE['emojiPassword'])) {
     }
     $conn->close();
 } else {
+    echo "Seems like you already participated.";
     //header("Location: ../index.html");
 }
