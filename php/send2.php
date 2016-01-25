@@ -16,9 +16,9 @@ $valScore = (int)$_POST['pwScore'];
 $valGuesses = (int)$_POST['pwGuesses'];
 
 /* questionnaire */
-$valLearningPasswordAnnoying = $_POST['learningPasswordAnnoying'];
-$valLearningPasswordDifficult = $_POST['learningPasswordDifficult'];
-$valLearningPasswordFun = $_POST['learningPasswordFun'];
+$valchoosingPasswordAnnoying = $_POST['choosingPasswordAnnoying'];
+$valchoosingPasswordDifficult = $_POST['choosingPasswordDifficult'];
+$valchoosingPasswordFun = $_POST['choosingPasswordFun'];
 $valPasswordReuse = $_POST['passwordReuse'];
 $valPasswordReuseSlightModification = $_POST['passwordReuseSlightModification'];
 $valRealPwUpper = (int)$_POST['realPwUpper'];
@@ -38,7 +38,7 @@ $valDesktopVsMobile = $_POST['desktopVsMobile'];
 $valGender = $_POST['gender'];
 $valAge = (int)$_POST['age'];
 
-$sql = "INSERT INTO `survey_1`(`testGroup`, `gender`, `age`, `pwLength`, `pwNumbers`, `pwLower`, `pwUpper`, `pwSpecial`, `pwEmoji`, `pwScore`, `pwGuesses`, `learningPasswordAnnoying`, `learningPasswordDifficult`, `learningPasswordFun`, `passwordReuse`, `passwordReuseSlightModification`, `realPwUpper`, `realPwLower`, `realPwNumbers`, `realPwSpecial`, `isMoreSecure`, `isAnnoying`, `isEasier`, `nrAccounts`, `nrAccountsMobile`, `altAuthenticationMobile`, `desktopVsMobile`) VALUES ($valGroup,'$valGender',$valAge,$valLength,$valNumbers,$valLower,$valUpper,$valSpecial,$valEmoji,$valScore,$valGuesses,'$valLearningPasswordAnnoying','$valLearningPasswordDifficult','$valLearningPasswordFun','$valPasswordReuse','$valPasswordReuseSlightModification',$valRealPwUpper,$valRealPwLower,$valRealPwNumbers,$valRealPwSpecial,'$valIsMoreSecure','$valIsAnnoying','$valIsEasier',$valNrAccounts,$valNrAccountsMobile,'$valAltAuthenticationMobile','$valDesktopVsMobile')";
+$sql = "INSERT INTO `survey_1`(`testGroup`, `gender`, `age`, `pwLength`, `pwNumbers`, `pwLower`, `pwUpper`, `pwSpecial`, `pwEmoji`, `pwScore`, `pwGuesses`, `choosingPasswordAnnoying`, `choosingPasswordDifficult`, `choosingPasswordFun`, `passwordReuse`, `passwordReuseSlightModification`, `realPwUpper`, `realPwLower`, `realPwNumbers`, `realPwSpecial`, `isMoreSecure`, `isAnnoying`, `isEasier`, `nrAccounts`, `nrAccountsMobile`, `altAuthenticationMobile`, `desktopVsMobile`) VALUES ($valGroup,'$valGender',$valAge,$valLength,$valNumbers,$valLower,$valUpper,$valSpecial,$valEmoji,$valScore,$valGuesses,'$valchoosingPasswordAnnoying','$valchoosingPasswordDifficult','$valchoosingPasswordFun','$valPasswordReuse','$valPasswordReuseSlightModification',$valRealPwUpper,$valRealPwLower,$valRealPwNumbers,$valRealPwSpecial,'$valIsMoreSecure','$valIsAnnoying','$valIsEasier',$valNrAccounts,$valNrAccountsMobile,'$valAltAuthenticationMobile','$valDesktopVsMobile')";
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully<br>";

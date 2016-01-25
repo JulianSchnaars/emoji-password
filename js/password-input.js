@@ -50,7 +50,7 @@ function matchHeight() {
 function initGroup() {
     /* group 0 means no emoji in the password; group 1 means emoji are required */
     //var group = Math.floor(Math.random() * 2);
-    var group = 1;
+    var group = 0;
     $('#password-group').val(group);
     if (group === 0) {
         $('.group-1').addClass('hidden');
@@ -164,7 +164,7 @@ $(document).ready(function () {
 
     /* check if mobile */
     if (isNotMobile.any()) {
-        //notMobileWarning();
+        notMobileWarning();
     }
     /* disable selection in input field */
     //$('.noselect').disableSelection();
@@ -225,20 +225,20 @@ $(document).ready(function () {
                 var pwUpperCase = passwordString.replace(/[^a-zäöü]/g, '').length;
                 var pwLowerCase = passwordString.replace(/[^A-ZÄÖÜ]/g, '').length;
                 if (pwUpperCase > 0 && pwLowerCase > 0) { // 2. check for upper and lower case
-                    var pwNumbers = passwordString.replace(/\D/g, '').length; // check for numbers
+                    var pwNumbers = passwordString.replace(/\D/g, '').length; // 3. check for numbers
                     if (pwNumbers > 0) {
                         if (group === 1) { //check if emoji group
                             var pwEmojis = passwordString.replace(/[^\uDE00-\uDFFF]/g, '').length;
-                            if (pwEmojis > 0) { // 3. check for emoji
+                            if (pwEmojis > 0) { // 4. check for emoji
                                 $('#questions').removeClass('hidden');
                                 //$('#password').addClass('hidden');
                                 setMetadata(realPassword, realPasswordConfirm);
                             } else {
                                 $('.policy-other').addClass('policy-error');
                             }
-                        } else { // special character
+                        } else { // special character group
                             var pwSpecialChars = passwordString.replace(regExSpecial, '').length;
-                            if (pwSpecialChars > 0) { // check for special characters
+                            if (pwSpecialChars > 0) { // 4. check for special ch
                                 $('#questions').removeClass('hidden');
                                 //$('#password').addClass('hidden');
                                 setMetadata(realPassword, realPasswordConfirm);
@@ -253,7 +253,7 @@ $(document).ready(function () {
                     $('.policy-letters').addClass('policy-error');
                 }
             } else { // password do not match
-                alert('Please check if your passwords match.');
+                //alert('Please check if your passwords match.');
                 password2.closest('.form-group').addClass('has-error');
             }
         } else {
