@@ -177,13 +177,16 @@ $(document).ready(function () {
         if (isPrevented(key)) {
             event.preventDefault();
             return false;
-        } else if (event.which === 8) {
-            //realPassword = remove(realPassword, caretPos);
-            realPassword = removeAll(password1);
+        } else if (event.which === 8) { // backspace -> delete
+            if (realPassword.length === caretPos + 1) {
+                realPassword = remove(realPassword, caretPos);
+            } else {
+                realPassword = removeAll(password1);
+            }
         } else {
             realPassword = add(password1, realPassword, caretPos);
         }
-        //testOutput(realPassword, realPasswordConfirm, caretPos, key);
+        testOutput(realPassword, realPasswordConfirm, caretPos, key);
         setMetadata(realPassword, realPasswordConfirm);
         setPlaceholder(password1, realPassword, caretPos);
     });
@@ -196,8 +199,11 @@ $(document).ready(function () {
             if (event.preventDefault) event.preventDefault(); //normal browsers
             event.returnValue = false; //IE
         } else if (event.which === 8) {
-            //realPasswordConfirm = remove(realPasswordConfirm, caretPos);
-            realPasswordConfirm = removeAll(password2);
+            if (realPasswordConfirm.length === caretPos + 1) {
+                realPasswordConfirm = remove(realPasswordConfirm, caretPos);
+            } else {
+                realPasswordConfirm = removeAll(password2);
+            }
         } else {
             realPasswordConfirm = add(password2, realPasswordConfirm, caretPos);
         }
