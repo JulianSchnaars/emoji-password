@@ -59,14 +59,13 @@
                                 <label for="password-1">Password:</label>
                                 <input type="text" class="form-control noselect password-input" id="password-1" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Password">
                             </div>
-                            <div class="emoji-picker"></div>
                             <div class="form-group">
                                 <label for="password-2">Confirm Password:</label>
                                 <input type="text" unselectable="on" autocorrect="off" autocapitalize="off" spellcheck="false" class="form-control password-input" id="password-2" placeholder="Confirm Password">
                             </div>
 
                             <!-- Hidden fields for password metadata -->
-                            <div class="">
+                            <div class="hidden">
                                 <input type="text" name="pwGroup" id="password-group" placeholder="Group">
                                 <input type="text" name="pwLength" id="password-length" placeholder="Length">
                                 <input type="text" name="pwNumbers" id="password-numbers" placeholder="Numbers">
@@ -503,9 +502,9 @@
         </div>
     </div>
     <!--###### Message for desktop browser #####-->
-    <div class="container hidden" id="desktop">
+    <div class="container hidden bg-danger" id="desktop">
         <div class="row">
-            <div class="col-xs-8 col-xs-offset-2">
+            <div class="col-xs-8 col-xs-offset-2 col-lg-6 col-lg-offset-3">
                 <h3>You seem to be on a desktop browser.</h3>
                 <p>This is a mobile study. Please come back on your smartphone or tablet.</p>
                 <p><strong>Just grab a mobile device and get back here fast by using this link:</strong>
