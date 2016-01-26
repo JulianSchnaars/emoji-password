@@ -12,6 +12,4 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-mysqli_set_charset($conn, "utf8"); //utf8mb4
-
-echo 'Connected successfully<br>';
+mysqli_set_charset($conn, "utf8"); //utf8mb4 would be better, but not server supported

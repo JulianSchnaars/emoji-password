@@ -70,25 +70,26 @@ $valNrAccounts,$valNrAccountsMobile,'$valAltAuthenticationMobile',
 )";
 
 
-if (!isset($_COOKIE['emojiPassword'])) {
+if (!isset($_COOKIE['emojiPassword']) || !isset($_COOKIE['emojiPasswordGroup'])) {
     /* ##### set cookie #####*/
     $expires = time()+60*60*24*40;  // 40 days
     setcookie('emojiPassword', $valPassword, $expires, '/');
     setcookie('emojiPasswordGroup', $valGroup, $expires, '/');
-    echo "cookie set <br>";
+    //echo "cookie set <br>";
 
-    //header("Location: ../email.html");
+    header("Location: ../email.html");
 
     /*##### make connection #####*/
     include('connection.php');
 
     if ($conn->query($sql) === true) {
-        echo "New record created successfully<br>";
+        $last_id = $conn->insert_id;
+        setcookie('emojiPasswordId', $last_id, $expires, '/');
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
     $conn->close();
 } else {
-    echo "Seems like you already participated.";
     //header("Location: ../index.html");
+    echo "Seems like you already participated.";
 }
