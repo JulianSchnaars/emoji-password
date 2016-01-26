@@ -112,15 +112,26 @@ function isPrevented(key) {
 }
 
 function getCookie(name) {
-  var value = "; " + document.cookie;
-  var parts = value.split("; " + name + "=");
-  if (parts.length == 2) return parts.pop().split(";").shift();
+    var value = "; " + document.cookie;
+    var parts = value.split("; " + name + "=");
+    if (parts.length == 2) return parts.pop().split(";").shift();
+}
+
+function setUserData() {
+    var id = getCookie('emojiPasswordId');
+    var group = getCookie('emojiPasswordGroup');
+
+    $('#password-id').val(id);
+    $('#password-group').val(group);
 }
 
 $(document).ready(function () {
     var password1 = $('#password-1');
     var savedPassword = getCookie('emojiPassword');
     var realPassword = [];
+
+    /* get group and id from last time */
+    setUserData();
 
     /* set min-hiehgt for different sections */
     matchHeight();
@@ -160,6 +171,13 @@ $(document).ready(function () {
         clearPwds();
     });
 
+    /* in case password was forgotten */
+    $("#forgot-password").click(function () {
+        realPassword = [];
+        $('#questions').removeClass('hidden');
+        $('#password').addClass('hidden');
+    });
+
     /* next button for sections */
     $('#questionsNext').click(function () {
         password1.closest('.form-group').removeClass('has-error');
@@ -167,9 +185,9 @@ $(document).ready(function () {
             //alert('all right');
             $('#questions').removeClass('hidden');
             $('#password').addClass('hidden');
-            setMetadata();
         } else {
             password1.closest('.form-group').addClass('has-error');
+            $('#forgot-password').removeClass('hidden');
         }
     });
     $('#start').click(function () {

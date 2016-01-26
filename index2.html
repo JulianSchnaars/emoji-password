@@ -39,9 +39,19 @@
                                 <label for="password-1">Password:</label>
                                 <input type="text" unselectable="on" autocorrect="off" autocapitalize="off" spellcheck="false" class="form-control password-input" id="password-1" placeholder="Password">
                             </div>
-                            <p id="control"></p>
-                            <button type="button" class="btn btn-default" id="clear">Clear</button>
+                            <div class=" ">
+                                <input type="text" name="passwordId" id="password-id" placeholder="Id">
+                                <input type="text" name="pwGroup" id="password-group" placeholder="Group">
+                                <p id="control"></p>
+                            </div>
+                            <p>
+                                <button type="button" class="btn btn-default" id="clear">Clear</button>
+                            </p>
+
                         </section>
+                        <p>
+                            <button type="button" class="btn btn-warning btn-block hidden" id="forgot-password">I forgot the password from last time - skip</button>
+                        </p>
                         <a href="#questions" id="questionsNext" class="next">
                             <button type="button" class="btn btn-primary btn-lg btn-block">Next</button>
                         </a>
