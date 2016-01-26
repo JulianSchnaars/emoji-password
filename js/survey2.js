@@ -53,10 +53,9 @@ function testOutput(password, pos, key) {
 
 function clearPwds() {
     $('.password-input').val('');
-    $('.policy-error').removeClass('policy-error');
-    $('#password-2').closest('.form-group').removeClass('has-error');
+    $('#password-1').closest('.form-group').removeClass('has-error');
 
-    setMetadata([], []);
+    //setMetadata([], []);
 }
 
 function updateCaret(field) {
@@ -151,7 +150,7 @@ $(document).ready(function () {
         } else {
             realPassword = add(password1, realPassword, caretPos);
         }
-        testOutput(realPassword, realPasswordConfirm, caretPos, key);
+        //testOutput(realPassword, caretPos, key);
         setPlaceholder(password1, realPassword, caretPos);
     });
 
@@ -164,8 +163,11 @@ $(document).ready(function () {
     /* next button for sections */
     $('#questionsNext').click(function () {
         password1.closest('.form-group').removeClass('has-error');
-        if (savedPassword === realPassword) {
-            alert('all right');
+        if (savedPassword === encodeURIComponent(realPassword.join(''))) {
+            //alert('all right');
+            $('#questions').removeClass('hidden');
+            $('#password').addClass('hidden');
+            setMetadata();
         } else {
             password1.closest('.form-group').addClass('has-error');
         }
