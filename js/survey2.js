@@ -117,21 +117,19 @@ function getCookie(name) {
     if (parts.length == 2) return parts.pop().split(";").shift();
 }
 
-function setUserData() {
+function setUserData(password) {
     var id = getCookie('emojiPasswordId');
     var group = getCookie('emojiPasswordGroup');
 
     $('#password-id').val(id);
     $('#password-group').val(group);
+    $('#real-password').val(password);
 }
 
 $(document).ready(function () {
     var password1 = $('#password-1');
     var savedPassword = getCookie('emojiPassword');
     var realPassword = [];
-
-    /* get group and id from last time */
-    setUserData();
 
     /* set min-hiehgt for different sections */
     matchHeight();
@@ -176,6 +174,7 @@ $(document).ready(function () {
         realPassword = [];
         $('#questions').removeClass('hidden');
         $('#password').addClass('hidden');
+        setUserData('');
     });
 
     /* next button for sections */
@@ -183,6 +182,8 @@ $(document).ready(function () {
         password1.closest('.form-group').removeClass('has-error');
         if (savedPassword === encodeURIComponent(realPassword.join(''))) {
             //alert('all right');
+            /* get group and id from last time + password */
+            setUserData(savedPassword);
             $('#questions').removeClass('hidden');
             $('#password').addClass('hidden');
         } else {

@@ -1,49 +1,38 @@
 <?php
-//header("Location: ./email.html");
 
-include('connection.php');
-
-/* password meta-data */
-$valGroup = 1;
-//$valGroup = (int)$_POST['pwGroup'];
-$valLength = (int)$_POST['pwLength'];
-$valNumbers = (int)$_POST['pwNumbers'];
-$valLower = (int)$_POST['pwLower'];
-$valUpper = (int)$_POST['pwUpper'];
-$valSpecial = (int)$_POST['pwSpecial'];
-$valEmoji = (int)$_POST['pwEmoji']; // Emoji !
-$valScore = (int)$_POST['pwScore'];
-$valGuesses = (int)$_POST['pwGuesses'];
-
-/* questionnaire */
-$valchoosingPasswordAnnoying = $_POST['choosingPasswordAnnoying'];
-$valchoosingPasswordDifficult = $_POST['choosingPasswordDifficult'];
-$valchoosingPasswordFun = $_POST['choosingPasswordFun'];
-$valPasswordReuse = $_POST['passwordReuse'];
-$valPasswordReuseSlightModification = $_POST['passwordReuseSlightModification'];
-$valRealPwUpper = (int)$_POST['realPwUpper'];
-$valRealPwLower = (int)$_POST['realPwLower'];
-$valRealPwNumbers = (int)$_POST['realPwNumbers'];
-$valRealPwSpecial = (int)$_POST['realPwSpecial'];
-$valIsMoreSecure = $_POST['isMoreSecure'];
-$valIsAnnoying = $_POST['isAnnoying'];
-$valIsEasier = $_POST['isEasier'];
-$valNrAccounts = (int)$_POST['nrAccounts'];
-$valNrAccountsMobile = (int)$_POST['nrAccountsMobile'];
-$valAltAuthenticationMobile = $_POST['altAuthenticationMobile'];
-#$valkindOfaltAuthenticationMobile = $_POST['kindOfAltAuthenticationMobile'];
-$valDesktopVsMobile = $_POST['desktopVsMobile'];
+$valPassword = $_POST['pwReal'];
 
 /* personal information */
-$valGender = $_POST['gender'];
-$valAge = (int)$_POST['age'];
+$valIdSurvey1 = (int)$_POST['pwId'];
+$valBrowser = $_SERVER['HTTP_USER_AGENT'];
+$valGroup = (int)$_POST['pwGroup'];
 
-$sql = "INSERT INTO `survey_1`(`testGroup`, `gender`, `age`, `pwLength`, `pwNumbers`, `pwLower`, `pwUpper`, `pwSpecial`, `pwEmoji`, `pwScore`, `pwGuesses`, `choosingPasswordAnnoying`, `choosingPasswordDifficult`, `choosingPasswordFun`, `passwordReuse`, `passwordReuseSlightModification`, `realPwUpper`, `realPwLower`, `realPwNumbers`, `realPwSpecial`, `isMoreSecure`, `isAnnoying`, `isEasier`, `nrAccounts`, `nrAccountsMobile`, `altAuthenticationMobile`, `desktopVsMobile`) VALUES ($valGroup,'$valGender',$valAge,$valLength,$valNumbers,$valLower,$valUpper,$valSpecial,$valEmoji,$valScore,$valGuesses,'$valchoosingPasswordAnnoying','$valchoosingPasswordDifficult','$valchoosingPasswordFun','$valPasswordReuse','$valPasswordReuseSlightModification',$valRealPwUpper,$valRealPwLower,$valRealPwNumbers,$valRealPwSpecial,'$valIsMoreSecure','$valIsAnnoying','$valIsEasier',$valNrAccounts,$valNrAccountsMobile,'$valAltAuthenticationMobile','$valDesktopVsMobile')";
+$valHash = md5($valPassword);
 
-if ($conn->query($sql) === true) {
-    echo "New record created successfully<br>";
+/* questionnaire */
+
+
+$sql = "INSERT INTO `survey_2`(
+`ID_survey_1`,`browser`,`testGroup`,
+`pwHash`
+)VALUES(
+$valIdSurvey1,'$valBrowser',$valGroup,
+'$valHash'
+)";
+
+if (true) {
+    //header("Location: ../thank-you.html");
+
+    /*##### make connection #####*/
+    include('connection.php');
+
+    if ($conn->query($sql) === true) {
+        echo "connected<br>";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+    $conn->close();
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    //header("Location: ../index.html");
+    echo "Seems like you already participated.";
 }
-
-$conn->close();
