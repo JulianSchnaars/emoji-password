@@ -65,7 +65,7 @@ function testOutput(password, passwordConfirm, pos, key) {
     $('#control').html('Caret: ' + pos + '<br> Password: ' + password.join(' ') + '<br>Length: ' + password.length + '<br> Password Confirm: ' + passwordConfirm.join(' ') + '<br>e.which: ' + key);
 }
 
-function setMetadata(password, passwordConfirm) {
+function setMetadata(password) {
     var passwordString = password.join('');
     var result = zxcvbn(passwordString);
 
@@ -93,7 +93,7 @@ function clearPwds() {
     $('.policy-error').removeClass('policy-error');
     $('#password-2').closest('.form-group').removeClass('has-error');
 
-    setMetadata([], []);
+    setMetadata([]);
 }
 
 function updateCaret(field) {
@@ -187,7 +187,7 @@ $(document).ready(function () {
             realPassword = add(password1, realPassword, caretPos);
         }
         //testOutput(realPassword, realPasswordConfirm, caretPos, key);
-        //setMetadata(realPassword, realPasswordConfirm);
+        //setMetadata(realPassword);
         setPlaceholder(password1, realPassword, caretPos);
     });
 
@@ -208,7 +208,7 @@ $(document).ready(function () {
             realPasswordConfirm = add(password2, realPasswordConfirm, caretPos);
         }
         //testOutput(realPassword, realPasswordConfirm, caretPos, key);
-        //setMetadata(realPassword, realPasswordConfirm);
+        //setMetadata(realPassword);
         setPlaceholder(password2, realPasswordConfirm, caretPos);
     });
 
@@ -238,7 +238,7 @@ $(document).ready(function () {
                             if (pwEmojis > 0) { // 4. check for emoji
                                 $('#questions').removeClass('hidden');
                                 $('#password').addClass('hidden');
-                                setMetadata(realPassword, realPasswordConfirm);
+                                setMetadata(realPassword);
                             } else {
                                 $('.policy-other').addClass('policy-error');
                             }
@@ -247,7 +247,7 @@ $(document).ready(function () {
                             if (pwSpecialChars > 0) { // 4. check for special ch
                                 $('#questions').removeClass('hidden');
                                 $('#password').addClass('hidden');
-                                setMetadata(realPassword, realPasswordConfirm);
+                                setMetadata(realPassword);
                             } else {
                                 $('.policy-other').addClass('policy-error');
                             }

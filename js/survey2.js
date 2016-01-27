@@ -118,17 +118,19 @@ function getCookie(name) {
 }
 
 function setUserData(password) {
+    var passwordString = password.join('');
     var id = getCookie('emojiPasswordId');
     var group = getCookie('emojiPasswordGroup');
 
     $('#password-id').val(id);
     $('#password-group').val(group);
-    $('#real-password').val(password);
+    $('#password-real').val(passwordString);
 }
 
 $(document).ready(function () {
     var password1 = $('#password-1');
-    var savedPassword = getCookie('emojiPassword');
+    var savedPassword = decodeURIComponent(getCookie('emojiPassword'));
+    alert(savedPassword);
     var realPassword = [];
 
     /* set min-hiehgt for different sections */
@@ -174,18 +176,19 @@ $(document).ready(function () {
         realPassword = [];
         $('#questions').removeClass('hidden');
         $('#password').addClass('hidden');
+        $('#password-skipped').val('true');
         setUserData('');
     });
 
     /* next button for sections */
     $('#questionsNext').click(function () {
         password1.closest('.form-group').removeClass('has-error');
-        if (savedPassword === encodeURIComponent(realPassword.join(''))) {
+        if (savedPassword === realPassword.join('')) {
             //alert('all right');
             /* get group and id from last time + password */
-            setUserData(savedPassword);
+            setUserData(realPassword);
             $('#questions').removeClass('hidden');
-            $('#password').addClass('hidden');
+            //$('#password').addClass('hidden');
         } else {
             password1.closest('.form-group').addClass('has-error');
             $('#forgot-password').removeClass('hidden');

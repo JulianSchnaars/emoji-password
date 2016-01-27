@@ -6,6 +6,7 @@ $valPassword = $_POST['pwReal'];
 $valIdSurvey1 = (int)$_POST['pwId'];
 $valBrowser = $_SERVER['HTTP_USER_AGENT'];
 $valGroup = (int)$_POST['pwGroup'];
+$valPwSkipped = $_POST['pwSkipped'];
 
 $valHash = md5($valPassword);
 
@@ -16,20 +17,19 @@ $valSceneImaginedGeneral = $_POST['sceneImaginedGeneral'];
 $valSceneImaginedThisPw = $_POST['sceneImaginedThisPw'];
 $valPhraseImagined = $_POST['phraseImagined'];
 $valStoryImagined = $_POST['storyImagined'];
-$valPhraseImagined = $_POST['phraseImagined'];
 $valDifferentForRealAccount = $_POST['differentForRealAccount'];
 
 $sql = "INSERT INTO `survey_2`(
-`ID_survey_1`,`browser`,`testGroup`,
+`ID_survey_1`,`browser`,`testGroup`,`pwSkipped`,
 `pwHash`,
 `enterPassword`,`writtenOrStored`,
-`sceneImaginedGeneral`,`sceneImaginedThisPw`,`phraseImagined`,`storyImagined`,`phraseImagined`,
+`sceneImaginedGeneral`,`sceneImaginedThisPw`,`phraseImagined`,`storyImagined`,
 `differentForRealAccount`
 )VALUES(
-$valIdSurvey1,'$valBrowser',$valGroup,
+$valIdSurvey1,'$valBrowser',$valGroup,'$valPwSkipped',
 '$valHash',
 '$valEnterPassword','$valWrittenOrStored',
-'$valSceneImaginedGeneral','$valSceneImaginedThisPw','$valPhraseImagined','$valStoryImagined','$valPhraseImagined',
+'$valSceneImaginedGeneral','$valSceneImaginedThisPw','$valPhraseImagined','$valStoryImagined',
 '$valDifferentForRealAccount'
 )";
 
