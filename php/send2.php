@@ -10,14 +10,27 @@ $valGroup = (int)$_POST['pwGroup'];
 $valHash = md5($valPassword);
 
 /* questionnaire */
-
+$valEnterPassword = $_POST['enterPassword'];
+$valWrittenOrStored = $_POST['writtenOrStored'];
+$valSceneImaginedGeneral = $_POST['sceneImaginedGeneral'];
+$valSceneImaginedThisPw = $_POST['sceneImaginedThisPw'];
+$valPhraseImagined = $_POST['phraseImagined'];
+$valStoryImagined = $_POST['storyImagined'];
+$valPhraseImagined = $_POST['phraseImagined'];
+$valDifferentForRealAccount = $_POST['differentForRealAccount'];
 
 $sql = "INSERT INTO `survey_2`(
 `ID_survey_1`,`browser`,`testGroup`,
-`pwHash`
+`pwHash`,
+`enterPassword`,`writtenOrStored`,
+`sceneImaginedGeneral`,`sceneImaginedThisPw`,`phraseImagined`,`storyImagined`,`phraseImagined`,
+`differentForRealAccount`
 )VALUES(
 $valIdSurvey1,'$valBrowser',$valGroup,
-'$valHash'
+'$valHash',
+'$valEnterPassword','$valWrittenOrStored',
+'$valSceneImaginedGeneral','$valSceneImaginedThisPw','$valPhraseImagined','$valStoryImagined','$valPhraseImagined',
+'$valDifferentForRealAccount'
 )";
 
 if (!isset($_COOKIE['emojiPasswordPart2'])) {
