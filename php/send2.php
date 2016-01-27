@@ -20,14 +20,15 @@ $valIdSurvey1,'$valBrowser',$valGroup,
 '$valHash'
 )";
 
-if (true) {
+if (!isset($_COOKIE['emojiPasswordPart2'])) {
     //header("Location: ../thank-you.html");
 
     /*##### make connection #####*/
     include('connection.php');
 
     if ($conn->query($sql) === true) {
-        echo "connected<br>";
+        $expires = time()+60*60*24*40;  // 40 days
+        setcookie('emojiPasswordPart2', 'true', $expires, '/');
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
