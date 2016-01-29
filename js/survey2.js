@@ -130,7 +130,7 @@ function setUserData(password) {
 $(document).ready(function () {
     var password1 = $('#password-1');
     var savedPassword = decodeURIComponent(getCookie('emojiPassword'));
-    alert(savedPassword);
+    //alert(savedPassword);
     var realPassword = [];
 
     /* set min-hiehgt for different sections */
@@ -188,7 +188,7 @@ $(document).ready(function () {
             /* get group and id from last time + password */
             setUserData(realPassword);
             $('#questions').removeClass('hidden');
-            //$('#password').addClass('hidden');
+            $('#password').addClass('hidden');
         } else {
             password1.closest('.form-group').addClass('has-error');
             $('#forgot-password').removeClass('hidden');

@@ -4,7 +4,12 @@
 /*(function () {
     var pwField = $('#password-1');
 })();*/
+//var regExEmoji = /[^\uDE00\uD83C-\uDFFF\uD83D]/g;
 var regExSpecial = /[^~`!#@\$%\^&*+=\-\[\]\\';,§\/{}()|\\":.<>\?≠¿¡“¶¢‘±œπæ–…∞µ~∫√ç≈¥å‚∂ƒ©ªº]/g;
+var regExLower = /[^a-zäöü]/g;
+var regExUpper = /[^A-ZÄÖÜ]/g;
+var regExNumber = /\D/g;
+var regExAll = /[~`!#@\$%\^&*+=\-\[\]\\';,§\/{}()|\\":.<>\?≠¿¡“¶¢‘±œπæ–…∞µ~∫√ç≈¥å‚∂ƒ©ªº a-zäöü A-ZÄÖÜ 0123456789]/g;
 
 // This jQuery Plugin will disable text selection for Android and iOS devices.
 // Stackoverflow Answer: http://stackoverflow.com/a/2723677/1195891
@@ -69,19 +74,15 @@ function setMetadata(password) {
     var passwordString = password.join('');
     var result = zxcvbn(passwordString);
 
-    /* UTF32 -> UTF16   -   1F600 -> D83D DE00                      */
-    /* first part stays the same, only the second part is counted   */
-    var emoji = passwordString.replace(/[^\uDE00-\uDFFF]/g, '');
-    //var emojiOutput = emojione.toShort(passwordString.replace(/[^\uD83D\uDE00-\uDFFF]/g, ''));
-    var emojiOutput = encodeURIComponent(passwordString.replace(/[^\uD83D\uDE00-\uDFFF]/g, ''));
-    //var emojiOutput = passwordString.replace(/[\uD83D\u]/g, ' x');
+    /* replace all but emoji */
+    var emojiOutput = passwordString.replace(regExAll, '');
 
     $('#password-length').val(password.length);
-    $('#password-numbers').val(passwordString.replace(/\D/g, '').length);
-    $('#password-lower').val((passwordString.replace(/[^a-zäöü]/g, '').length).toString());
-    $('#password-upper').val((passwordString.replace(/[^A-ZÄÖÜ]/g, '').length).toString());
-    $('#password-special').val((passwordString.replace(regExSpecial, '').length).toString());
-    $('#password-emojiNr').val(emoji.length);
+    $('#password-numbers').val(passwordString.replace(regExNumber, '').length);
+    $('#password-lower').val((passwordString.replace(regExLower, '').length).toString());
+    $('#password-upper').val((passwordString.replace(regExUpper, '').length).toString());
+    $('#password-special').val((passwordString.replace(regExSpecial, '').length));
+    $('#password-emojiNr').val(emojiOutput.length/2);
     $('#password-emoji').val(emojiOutput);
     $('#password-score').val(result.score);
     $('#password-guesses').val(result.guesses);
@@ -187,7 +188,7 @@ $(document).ready(function () {
             realPassword = add(password1, realPassword, caretPos);
         }
         //testOutput(realPassword, realPasswordConfirm, caretPos, key);
-        //setMetadata(realPassword);
+        setMetadata(realPassword);
         setPlaceholder(password1, realPassword, caretPos);
     });
 
@@ -234,7 +235,7 @@ $(document).ready(function () {
                     var pwNumbers = passwordString.replace(/\D/g, '').length; // 3. check for numbers
                     if (pwNumbers > 0) {
                         if (group === 1) { //check if emoji group
-                            var pwEmojis = passwordString.replace(/[^\uDE00-\uDFFF]/g, '').length;
+                            var pwEmojis = passwordString.replace(/[^\u2763\u2764\uDE00-\uDFFF]/g, '').length;
                             if (pwEmojis > 0) { // 4. check for emoji
                                 $('#questions').removeClass('hidden');
                                 $('#password').addClass('hidden');
