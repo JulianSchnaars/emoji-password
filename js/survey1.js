@@ -75,7 +75,7 @@ function setMetadata(password) {
     var result = zxcvbn(passwordString);
 
     /* replace all but emoji */
-    var emojiOutput = passwordString.replace(regExAll, '');
+    var emojiOutput = encodeURIComponent(passwordString.replace(regExAll, 'x'));
 
     $('#password-length').val(password.length);
     $('#password-numbers').val(passwordString.replace(regExNumber, '').length);
@@ -188,7 +188,7 @@ $(document).ready(function () {
             realPassword = add(password1, realPassword, caretPos);
         }
         //testOutput(realPassword, realPasswordConfirm, caretPos, key);
-        setMetadata(realPassword);
+        //setMetadata(realPassword);
         setPlaceholder(password1, realPassword, caretPos);
     });
 

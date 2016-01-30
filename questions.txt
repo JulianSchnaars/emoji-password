@@ -1,0 +1,33 @@
+What can you say about the password you just created?
+- I put as much effort and thought into it, as if I had to create a new password for my email account.
+- It was difficult for me to find a password that fitted the given requirements.
+- Choosing the password was annoying.
+- Coming up with a password was fun.
+- I think I created a password that I can remember easily.
+
+What can you say about the way you communicate?
+- My favourite way of staying in touch is...
+- I write messages on my phone...
+- I use emoji character (😀👻) ...
+
+Now a little more serious: How do you handle your personal password management?
+- I have a password or set of passwords I reuse in different places.
+- I have a password that you use for different accounts with a slight modification for each account.
+- When choosing a password I think of a sentence or phrase to help me remember my password.
+- When choosing a password I think of a picture or scene to help me remember my password.
+- When choosing a password I think of a story to help me remember my password.
+
+Please tell us how you fell about the following. Answer intuatively. There are no "wrong" or "right" answers.
+- I think emoji character would make it easier to create passwords that are based on a story / an image / a pharase.
+- If passwords required emoji instead of special characters, I think it would be easier for me to use and remember them.
+- If my main email account required a password like the one I created in this study, it would make my email account more secure.
+- I would be annoyed if my main email account required a password like the one I had to create in this study.
+- If my main email account required a password like the one described in this study, it would be easier for me to remember it.
+- How would you compare the act of logging in on different devices?
+- I use as few special characters as possible in my password, because it is difficult to type them on mobile keyboards.
+
+These last questions pertain to your real online identity.
+- How many accounts do you have that you regularly log into? (At least once a week)
+- How many of your passwords do you regularly type on mobile devices?
+- How many of your accounts provide an alternative/different authentication method (e.g. a PIN) for their mobile websites/app?
+- Thinking about the real password you use for your primary email account, how many of the following does it contain? Write "0" if there are none.
