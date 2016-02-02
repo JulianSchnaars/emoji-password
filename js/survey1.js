@@ -131,7 +131,7 @@ function setPlaceholder(passwordField, password, pos) {
     if (length === 1) {
         placeholder = '•';
     } else {
-        placeholder = Array(length + 1).join('•');
+        placeholder = new Array(length + 1).join('•');
     }
     passwordField.val('');
     passwordField.val(placeholder);

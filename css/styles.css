@@ -26,6 +26,11 @@ section > p {
     font-weight: 500;
 }
 
+section > p.highlight{
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 form h3 {
     margin-top: 0px;
     padding-top: 30px;

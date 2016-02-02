@@ -1,8 +1,8 @@
 <?php
 
-define('DB_NAME', 'usr_web138276_1');
-define('DB_USER', 'web138276');
-define('DB_PASSWORD', 'FR8PXRzGe%xvmur');
+/*define('DB_NAME', '');
+define('DB_USER', '');
+define('DB_PASSWORD', '');
 define('DB_HOST', 'localhost');
 
 // Create connection
@@ -12,4 +12,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-mysqli_set_charset($conn, "utf8"); //utf8mb4 would be better, but not server supported
+mysqli_set_charset($conn, "utf8"); //utf8mb4 would be better, but not server supported*/
+
+require_once('connection.private.php');
