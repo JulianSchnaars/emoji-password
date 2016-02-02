@@ -11,26 +11,31 @@ $valPwSkipped = $_POST['pwSkipped'];
 $valHash = md5($valPassword);
 
 /* questionnaire */
-$valEnterPassword = $_POST['enterPassword'];
+$valEnteredPasswordBy = $_POST['enteredPasswordBy'];
 $valWrittenOrStored = $_POST['writtenOrStored'];
-$valSceneImaginedGeneral = $_POST['sceneImaginedGeneral'];
-$valSceneImaginedThisPw = $_POST['sceneImaginedThisPw'];
+$valSceneImagined = $_POST['sceneImagined'];
 $valPhraseImagined = $_POST['phraseImagined'];
 $valStoryImagined = $_POST['storyImagined'];
 $valDifferentForRealAccount = $_POST['differentForRealAccount'];
+$valPasswordCharacteristics = $_POST['passwordCharacteristics'];
+$valEmojiPolicyAnnoying= $_POST['emojiPolicyAnnoying'];
+$valEmojiPinSmartphone = $_POST['emojiPinSmartphone'];
+$valWouldUseEmojiPw = $_POST['wouldUseEmojiPw'];
 
 $sql = "INSERT INTO `survey_2`(
 `ID_survey_1`,`browser`,`testGroup`,`pwSkipped`,
 `pwHash`,
-`enterPassword`,`writtenOrStored`,
-`sceneImaginedGeneral`,`sceneImaginedThisPw`,`phraseImagined`,`storyImagined`,
-`differentForRealAccount`
+`enteredPasswordBy`,`writtenOrStored`,
+`sceneImagined`,`phraseImagined`,`storyImagined`,
+`differentForRealAccount`,
+`passwordCharacteristics`,`emojiPolicyAnnoying`,`emojiPinSmartphone`,`wouldUseEmojiPw`
 )VALUES(
 $valIdSurvey1,'$valBrowser',$valGroup,'$valPwSkipped',
 '$valHash',
-'$valEnterPassword','$valWrittenOrStored',
-'$valSceneImaginedGeneral','$valSceneImaginedThisPw','$valPhraseImagined','$valStoryImagined',
-'$valDifferentForRealAccount'
+'$valEnteredPasswordBy','$valWrittenOrStored',
+'$valSceneImagined','$valPhraseImagined','$valStoryImagined',
+'$valDifferentForRealAccount',
+'$valPasswordCharacteristics','$valEmojiPolicyAnnoying','$valEmojiPinSmartphone','$valWouldUseEmojiPw'
 )";
 
 if (!isset($_COOKIE['emojiPasswordPart2'])) {

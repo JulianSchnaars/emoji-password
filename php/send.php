@@ -22,51 +22,63 @@ $valGuesses = (int)$_POST['pwGuesses'];
 $valHash = md5($valPassword);
 
 /* questionnaire */
-$valChoosingPasswordAnnoying = $_POST['choosingPasswordAnnoying'];
-$valChoosingPasswordDifficult = $_POST['choosingPasswordDifficult'];
-$valChoosingPasswordFun = $_POST['choosingPasswordFun'];
+$valPwCreationEffort = $_POST['pwCreationEffort'];
+$valChoosingPwDifficult = $_POST['choosingPwDifficult'];
+$valChoosingPwAnnoying = $_POST['choosingPwAnnoying'];
+$valChoosingPwFun = $_POST['choosingPwFun'];
+$valEasilyMemorable = $_POST['easilyMemorable'];
+$valCommunication = $_POST['communication'];
+$valMessagesOnPhone = $_POST['messagesOnPhone'];
+$valEmojiUseGeneral = $_POST['emojiUseGeneral'];
 $valPasswordReuse = $_POST['passwordReuse'];
 $valPasswordReuseSlightModification = $_POST['passwordReuseSlightModification'];
+$valPwPhrase = $_POST['pwPhrase'];
+$valPwPicture = $_POST['pwPicture'];
+$valPwStory = $_POST['pwStory'];
+$valEmojiVsSpecial = $_POST['emojiVsSpecial'];
+$valIsMoreSecure = $_POST['isMoreSecure'];
+$valIsAnnoying = $_POST['isAnnoying'];
+$valIsEasier = $_POST['isEasier'];
+$valDesktopVsMobile = $_POST['desktopVsMobile'];
+$valSpecialCharactersDifficultOnMobile = $_POST['specialCharactersDifficultOnMobile'];
+$valNrAccounts = (int)$_POST['nrAccounts'];
+$valNrAccountsMobile = (int)$_POST['nrAccountsMobile'];
+$valAltAuthenticationMobile = $_POST['altAuthenticationMobile'];
 $valRealPwUpper = (int)$_POST['realPwUpper'];
 $valRealPwLower = (int)$_POST['realPwLower'];
 $valRealPwNumbers = (int)$_POST['realPwNumbers'];
 $valRealPwSpecial = (int)$_POST['realPwSpecial'];
-$valIsMoreSecure = $_POST['isMoreSecure'];
-$valIsAnnoying = $_POST['isAnnoying'];
-$valIsEasier = $_POST['isEasier'];
-$valNrAccounts = (int)$_POST['nrAccounts'];
-$valNrAccountsMobile = (int)$_POST['nrAccountsMobile'];
-$valAltAuthenticationMobile = $_POST['altAuthenticationMobile'];
-#$valkindOfaltAuthenticationMobile = $_POST['kindOfAltAuthenticationMobile'];
-$valDesktopVsMobile = $_POST['desktopVsMobile'];
-$valFewSpecialCharacters = $_POST['fewSpecialCharacters'];
-$valEmojiVsSpecial = $_POST['emojiVsSpecial'];
-$valEmojiUseGeneral = $_POST['emojiUseGeneral'];
 
 $sql = "INSERT INTO `survey_1`(
 `browser`,`testGroup`,
 `gender`,`age`,`country`,
 `pwLength`,`pwNumbers`,`pwLower`,`pwUpper`,`pwSpecial`,`pwEmojiNr`, `pwEmoji`, `pwScore`, `pwGuesses`, `pwHash`,
-`choosingPasswordAnnoying`, `choosingPasswordDifficult`, `choosingPasswordFun`,
+`pwCreationEffort`,
+`choosingPwAnnoying`, `choosingPwDifficult`, `choosingPwFun`,
+`easilyMemorable`,`communication`,
+`messagesOnPhone`,`emojiUseGeneral`,
 `passwordReuse`, `passwordReuseSlightModification`,
-`realPwUpper`, `realPwLower`, `realPwNumbers`, `realPwSpecial`,
+`pwPhrase`,`pwPicture`,`pwStory`,
+`emojiVsSpecial`,
 `isMoreSecure`, `isAnnoying`, `isEasier`,
+`desktopVsMobile`,`specialCharactersDifficultOnMobile`,
 `nrAccounts`, `nrAccountsMobile`, `altAuthenticationMobile`,
-`desktopVsMobile`,
-`fewSpecialCharacters`,
-`emojiVsSpecial`, `emojiUseGeneral`)
-VALUES(
+`realPwUpper`, `realPwLower`, `realPwNumbers`, `realPwSpecial`
+)VALUES(
 '$valBrowser',$valGroup,
 '$valGender',$valAge,'$valCountry',
 $valLength,$valNumbers,$valLower,$valUpper,$valSpecial,$valEmojiNr,'$valEmoji',$valScore,$valGuesses,'$valHash',
-'$valChoosingPasswordAnnoying','$valChoosingPasswordDifficult','$valChoosingPasswordFun',
+'$valPwCreationEffort',
+'$valChoosingPwAnnoying','$valChoosingPwDifficult','$valChoosingPwFun',
+'$valEasilyMemorable','$valCommunication',
+'$valMessagesOnPhone','$valEmojiUseGeneral',
 '$valPasswordReuse','$valPasswordReuseSlightModification',
-$valRealPwUpper,$valRealPwLower,$valRealPwNumbers,$valRealPwSpecial,
+'$valPwPhrase','$valPwPicture','$valPwStory',
+'$valEmojiVsSpecial',
 '$valIsMoreSecure','$valIsAnnoying','$valIsEasier',
+'$valDesktopVsMobile','$valSpecialCharactersDifficultOnMobile',
 $valNrAccounts,$valNrAccountsMobile,'$valAltAuthenticationMobile',
-'$valDesktopVsMobile',
-'$valFewSpecialCharacters',
-'$valEmojiVsSpecial','$valEmojiUseGeneral'
+$valRealPwUpper,$valRealPwLower,$valRealPwNumbers,$valRealPwSpecial
 )";
 
 
