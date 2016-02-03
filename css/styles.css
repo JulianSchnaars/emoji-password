@@ -109,7 +109,7 @@ h2 {
     background-repeat: no-repeat;
     background-position: center;
     float: left;
-    width: 7%;
+    width: 8%;
     height: 33px;
     margin-left: 1%;
     text-align: center;
@@ -126,3 +126,7 @@ h2 {
 
 
 
+
+#clear {
+    clear:left; float:left; margin-top: -15px;
+}

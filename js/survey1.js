@@ -11,21 +11,6 @@ var regExNotUpper = /[^A-ZÄÖÜ]/g;
 var regExNotNumber = /\D/g;
 var regExAllButEmoji = /[~`!#@\$%\^&*+=\-\[\]\\';,§\/{}()|\\":.<>\?≠¿¡“¶¢‘±œπæ–…∞µ~∫√ç≈¥å‚∂ƒ©ªº a-zäöü A-ZÄÖÜ 0123456789]/g;
 
-// This jQuery Plugin will disable text selection for Android and iOS devices.
-// Stackoverflow Answer: http://stackoverflow.com/a/2723677/1195891
-$.fn.extend({
-    disableSelection: function () {
-        this.each(function () {
-            this.onselectstart = function () {
-                return false;
-            };
-            this.unselectable = "on";
-            $(this).css('-moz-user-select', 'none');
-            $(this).css('-webkit-user-select', 'none');
-        });
-    }
-});
-
 var isNotMobile = {
     Android: function () {
         return navigator.userAgent.match(/Android/i);
@@ -55,11 +40,10 @@ function matchHeight() {
 function initGroup() {
     /* group 0 means no emoji in the password; group 1 means emoji are required */
     //var group = Math.floor(Math.random() * 2);
-    var group = 1;
+    var group = 0;
     $('#password-group').val(group);
     if (group === 0) { // no emoji
         $('.group-1').addClass('hidden');
-        $('.password-input').prop('type', 'password');
     } else { // emoji
         $('.group-0').addClass('hidden');
     }
@@ -70,15 +54,14 @@ function testOutput(password, passwordConfirm, pos, key) {
     $('#control').html('Caret: ' + pos + '<br> Password: ' + password.join(' ') + '<br>Length: ' + password.length + '<br> Password Confirm: ' + passwordConfirm.join(' ') + '<br>e.which: ' + key);
 }
 
-function setMetadata(password) {
-    var passwordString = password.join('');
+function setMetadata(passwordString) {
     var result = zxcvbn(passwordString);
 
     /* replace all but emoji */
     var emojiOutput = encodeURIComponent(passwordString.replace(regExAllButEmoji, 'x'));
     var emojiNr = passwordString.replace(regExAllButEmoji, '').length / 2;
 
-    $('#password-length').val(password.length);
+    $('#password-length').val(passwordString.length);
     $('#password-numbers').val(passwordString.replace(regExNotNumber, '').length);
     $('#password-lower').val((passwordString.replace(regExNotLower, '').length).toString());
     $('#password-upper').val((passwordString.replace(regExNotUpper, '').length).toString());
@@ -95,48 +78,7 @@ function clearPwds() {
     $('.policy-error').removeClass('policy-error');
     $('#password-2').closest('.form-group').removeClass('has-error');
 
-    setMetadata([]);
-}
-
-function updateCaret(field) {
-    return field.caret();
-}
-
-function add(passwordField, password, pos) {
-    var key = passwordField.val().replace(/•/g, '');
-    password.splice(pos - 1, 0, key);
-    return password;
-}
-
-function remove(password, pos) {
-    password.splice(pos, 1);
-    return password;
-}
-
-function removeAll(passwordField) {
-    passwordField.closest('.form-group').addClass('has-warning')
-        .delay(600)
-        .queue(function () {
-            $(this).removeClass('has-warning');
-            $(this).dequeue();
-        });
-    passwordField.val('');
-    return [];
-}
-
-function setPlaceholder(passwordField, password, pos) {
-    //var length = $('#password-real').val().length;
-    var length = password.length;
-    var placeholder = '';
-
-    if (length === 1) {
-        placeholder = '•';
-    } else {
-        placeholder = new Array(length + 1).join('•');
-    }
-    passwordField.val('');
-    passwordField.val(placeholder);
-    passwordField.caret(pos);
+    setMetadata('');
 }
 
 function notMobileWarning() {
@@ -145,25 +87,17 @@ function notMobileWarning() {
     //alert("This is not a mobile device");
 }
 
-function isPrevented(key) {
-    // return true if key event default should be prevented
-    // values for: left, right, up, down, shift, cmd, ctr, alt, space, enter, caps, tab, insert
-    return (key === 37 || key === 38 || key === 39 || key === 40 || key === 16 || key === 91 || key === 17 || key === 18 || key === 32 || key === 13 || key === 20 || key === 9 || key === 45);
-}
-
 $(document).ready(function () {
     var pwField1 = $('#password-1');
     var pwField2 = $('#password-2');
     var pwFields = $('.password-input');
-    var realPassword = [];
-    var realPasswordConfirm = [];
 
     /* initialize group */
     var group = initGroup();
 
     /* emoji area */
-    $.emojiarea.path = '../jquery-emojiarea-master/packs/basic/images';
     if (group === 1) {
+        $.emojiarea.path = '../jquery-emojiarea-master/packs/basic/images';
         pwFields.emojiarea({
             wysiwyg: false,
             buttonLabel: '',
@@ -180,50 +114,51 @@ $(document).ready(function () {
         //notMobileWarning();
     }
 
-    pwFields.on('touch click', function () {
-        $(this).caret($(this).val().length);
-    }).on('change', function () {
+    pwFields.on('change', function () {
         var input = $(this).val();
-        var output = (emojione.shortnameToUnicode(input)).replace(/\s/g, '');
+        var output = (emojione.shortnameToUnicode(input)).replace(/\s/g, ''); // click on emoji pastes shortname; has to be converted
         $(this).val(output);
+        $(this).focus();
+    }).on('keyup', function () {
+        //setMetadata($(this).val());
     });
 
     /* button for clearing password fields */
     $("#clear").click(function () {
-        realPassword = [];
-        realPasswordConfirm = [];
         clearPwds();
     });
 
     /* next button for sections */
     $('#questionsNext').click(function () {
         var policyError = $('.policy-error');
+        var password = pwField1.val();
+        var passwordConfirm = pwField2.val();
+
         policyError.removeClass('policy-error');
         pwField2.closest('.form-group').removeClass('has-error');
 
-        if (realPassword.length >= 12) { // 1. min length of 12
-            if (realPassword.join('') === realPasswordConfirm.join('')) { // passwords match
-                var passwordString = realPassword.join('');
-                var pwUpperCase = passwordString.replace(regExNotLower, '').length;
-                var pwLowerCase = passwordString.replace(regExNotSpecial, '').length;
+        if (password.length >= 12) { // 1. min length of 12
+            if (password === passwordConfirm) { // passwords match
+                var pwUpperCase = password.replace(regExNotLower, '').length;
+                var pwLowerCase = password.replace(regExNotUpper, '').length;
                 if (pwUpperCase > 0 && pwLowerCase > 0) { // 2. check for upper and lower case
-                    var pwNumbers = passwordString.replace(regExNotNumber, '').length; // 3. check for numbers
+                    var pwNumbers = password.replace(regExNotNumber, '').length; // 3. check for numbers
                     if (pwNumbers > 0) {
                         if (group === 1) { //check if emoji group
-                            var pwEmojis = passwordString.replace(regExAllButEmoji, '').length;
+                            var pwEmojis = password.replace(regExAllButEmoji, '').length;
                             if (pwEmojis > 0) { // 4. check for emoji
                                 $('#questions').removeClass('hidden');
-                                $('#password').addClass('hidden');
-                                setMetadata(realPassword);
+                                //$('#password').addClass('hidden');
+                                setMetadata(password);
                             } else {
                                 $('.policy-other').addClass('policy-error');
                             }
                         } else { // special character group
-                            var pwSpecialChars = passwordString.replace(regExNotSpecial, '').length;
+                            var pwSpecialChars = password.replace(regExNotSpecial, '').length;
                             if (pwSpecialChars > 0) { // 4. check for special ch
                                 $('#questions').removeClass('hidden');
                                 $('#password').addClass('hidden');
-                                setMetadata(realPassword);
+                                setMetadata(password);
                             } else {
                                 $('.policy-other').addClass('policy-error');
                             }

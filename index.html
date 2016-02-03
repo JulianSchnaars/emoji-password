@@ -86,21 +86,22 @@
                                     <li class="policy-length">12 characters or more</li>
                                     <li class="policy-letters">upper and lowercase letters</li>
                                     <li class="policy-numbers">1 number or more</li>
-                                    <li class="policy-other">1 emoji character or more <a target="_blank" href="emoji-info.html">(how to)</a>
-                                    </li>
+                                    <li class="policy-other">1 emoji character or more</li>
                                 </ul>
                             </div>
                             <div class="form-group" style="margin-top:30px;">
                                 <label for="password-1">Password: </label>
-                                <input type="password" unselectable="on" autocorrect="off" autocapitalize="off" spellcheck="false" class="form-control password-input" id="password-1" placeholder="Password" data-emojiable="true">
+                                <input type="password" class="form-control password-input" id="password-1" placeholder="Password">
                             </div>
                             <div class="form-group" style="margin-bottom:0px;">
                                 <label for="password-2">Confirm Password:</label>
-                                <input type="text" unselectable="on" autocorrect="off" autocapitalize="off" spellcheck="false" class="form-control password-input" id="password-2" placeholder="Confirm Password">
+                                <input type="password" class="form-control password-input" id="password-2" placeholder="Confirm Password">
                             </div>
-
+                            <p style="height: 40px; width:100%; ">
+                                <button type="button" class="btn btn-default" id="clear">Clear both</button>
+                            </p>
                             <!-- Hidden fields for password metadata -->
-                            <div class="hidden">
+                            <div class=" ">
                                 <input type="text" name="pwGroup" id="password-group" placeholder="Group">
                                 <input type="text" name="pwLength" id="password-length" placeholder="Length">
                                 <input type="text" name="pwNumbers" id="password-numbers" placeholder="Numbers">
@@ -115,9 +116,6 @@
 
                                 <p id="control"></p>
                             </div>
-                            <p style="height: 50px;">
-                                <button type="button" class="btn btn-default pull-left" id="clear">Clear</button>
-                            </p>
                         </section>
                         <a href="#questions" id="questionsNext" class="next">
                             <button type="button" class="btn btn-primary btn-lg btn-block">Next</button>
@@ -800,6 +798,7 @@
                         <div class="next">
                             <button type="submit" class="btn btn-warning btn-lg btn-block" id="submit">Send</button>
                         </div>
+                        <p style="margin-top: 60px; text-align: center;"><small>Built with resources from <a href="https://github.com/dropbox/zxcvbn">zxcvbn</a>, <a href="https://pius-ladenburger.de">Pius Ladenburger</a> &amp; <a href="http://git.emojione.com/demos/2.1.0/">emojione</a>.</small></p>
                     </section>
                 </form>
             </div>
@@ -825,7 +824,7 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="bower_components/zxcvbn/dist/zxcvbn.js" async></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.caret.js" async></script>
+    <!--<script src="js/jquery.caret.js" async></script>-->
     <script src="js/survey1.js"></script>
 
     <script src="//cdn.jsdelivr.net/emojione/2.1.0/lib/js/emojione.min.js"></script>

@@ -1,25 +1,7 @@
 /*global $, document */
 "use strict";
 
-/*(function () {
-    var pwField = $('#password-1');
-})();*/
 var regExSpecial = /[^~`!#@\$%\^&*+=\-\[\]\\';,§\/{}()|\\":.<>\?≠¿¡“¶¢‘±œπæ–…∞µ~∫√ç≈¥å‚∂ƒ©ªº]/g;
-
-// This jQuery Plugin will disable text selection for Android and iOS devices.
-// Stackoverflow Answer: http://stackoverflow.com/a/2723677/1195891
-$.fn.extend({
-    disableSelection: function () {
-        this.each(function () {
-            this.onselectstart = function () {
-                return false;
-            };
-            this.unselectable = "on";
-            $(this).css('-moz-user-select', 'none');
-            $(this).css('-webkit-user-select', 'none');
-        });
-    }
-});
 
 var isNotMobile = {
     Android: function () {
@@ -62,53 +44,10 @@ function updateCaret(field) {
     return field.caret();
 }
 
-function add(passwordField, password, pos) {
-    var key = passwordField.val().replace(/•/g, '');
-    password.splice(pos - 1, 0, key);
-    return password;
-}
-
-function remove(password, pos) {
-    password.splice(pos, 1);
-    return password;
-}
-
-function removeAll(passwordField) {
-    passwordField.closest('.form-group').addClass('has-warning')
-        .delay(600)
-        .queue(function () {
-            $(this).removeClass('has-warning');
-            $(this).dequeue();
-        });
-    passwordField.val('');
-    return [];
-}
-
-function setPlaceholder(passwordField, password, pos) {
-    //var length = $('#password-real').val().length;
-    var length = password.length;
-    var placeholder = '';
-
-    if (length === 1) {
-        placeholder = '•';
-    } else {
-        placeholder = Array(length + 1).join('•');
-    }
-    passwordField.val('');
-    passwordField.val(placeholder);
-    passwordField.caret(pos);
-}
-
 function notMobileWarning() {
     $('#mobile').toggleClass('half-opacity');
     $('#desktop').toggleClass('hidden');
     //alert("This is not a mobile device");
-}
-
-function isPrevented(key) {
-    // return true if key event default should be prevented
-    // values for: left, right, up, down, shift, cmd, ctr, alt, space, enter, caps, tab, insert
-    return (key === 37 || key === 38 || key === 39 || key === 40 || key === 16 || key === 91 || key === 17 || key === 18 || key === 32 || key === 13 || key === 20 || key === 9 || key === 45);
 }
 
 function getCookie(name) {
@@ -117,8 +56,7 @@ function getCookie(name) {
     if (parts.length == 2) return parts.pop().split(";").shift();
 }
 
-function setUserData(password) {
-    var passwordString = password.join('');
+function setUserData(passwordString) {
     var id = getCookie('emojiPasswordId');
     var group = getCookie('emojiPasswordGroup');
 
@@ -131,7 +69,18 @@ $(document).ready(function () {
     var pwField1 = $('#password-1');
     var savedPassword = decodeURIComponent(getCookie('emojiPassword'));
     //alert(savedPassword);
-    var realPassword = [];
+
+    //var group = getCookie('emojiPasswordGroup');
+    var group = 1;
+    /* emoji area */
+    if (group === 1) {
+        $.emojiarea.path = '../jquery-emojiarea-master/packs/basic/images';
+        pwField1.emojiarea({
+            wysiwyg: false,
+            buttonLabel: '',
+            buttonPosition: 'after'
+        });
+    }
 
     /* set min-hiehgt for different sections */
     matchHeight();
@@ -139,41 +88,26 @@ $(document).ready(function () {
 
     /* check if mobile */
     if (isNotMobile.any()) {
-        notMobileWarning();
+        //notMobileWarning();
     }
-    /* disable selection in input field */
-    //$('.noselect').disableSelection();
 
     /* key events in input field - password */
-    pwField1.bind('keyup', function (event) {
-        var key = event.keyCode || event.which;
-        var caretPos = updateCaret(pwField1);
-
-        if (isPrevented(key)) {
-            event.preventDefault();
-            return false;
-        } else if (event.which === 8) { // backspace -> delete
-            if (realPassword.length === caretPos + 1) {
-                realPassword = remove(realPassword, caretPos);
-            } else {
-                realPassword = removeAll(pwField1);
-            }
-        } else {
-            realPassword = add(pwField1, realPassword, caretPos);
-        }
-        //testOutput(realPassword, caretPos, key);
-        setPlaceholder(pwField1, realPassword, caretPos);
+    pwField1.on('change', function () {
+        var input = $(this).val();
+        var output = (emojione.shortnameToUnicode(input)).replace(/\s/g, ''); // click on emoji pastes shortname; has to be converted
+        $(this).val(output);
+        $(this).focus();
+    }).on('keyup', function () {
+        setUserData($(this).val());
     });
 
     /* button for clearing password fields */
     $("#clear").click(function () {
-        realPassword = [];
         clearPwds();
     });
 
     /* in case password was forgotten */
     $("#forgot-password").click(function () {
-        realPassword = [];
         $('#questions').removeClass('hidden');
         $('#password').addClass('hidden');
         $('#password-skipped').val('true');
@@ -182,8 +116,9 @@ $(document).ready(function () {
 
     /* next button for sections */
     $('#questionsNext').click(function () {
+        var realPassword = pwField1.val();
         pwField1.closest('.form-group').removeClass('has-error');
-        if (savedPassword === realPassword.join('')) {
+        if (savedPassword === realPassword) {
             //alert('all right');
             /* get group and id from last time + password */
             setUserData(realPassword);

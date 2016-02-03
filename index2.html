@@ -10,7 +10,12 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/emojione/2.1.0/assets/css/emojione.min.css" />
+
+    <link rel="stylesheet" href="jquery-emojiarea-master/jquery.emojiarea.css">
     <link href="css/styles.css" rel="stylesheet">
+    <link href="css/fontello.css" rel="stylesheet">
 </head>
 
 <body>
@@ -38,8 +43,11 @@
                             <p><strong>Enter the password you created the last time:</strong></p>
                             <div class="form-group" style="margin-top: 20px;">
                                 <label for="password-1">Password:</label>
-                                <input type="text" unselectable="on" autocorrect="off" autocapitalize="off" spellcheck="false" class="form-control password-input" id="password-1" placeholder="Password">
+                                <input type="password" class="form-control password-input" id="password-1" placeholder="Password">
                             </div>
+                            <p style="height: 40px; width:100%; ">
+                                <button type="button" class="btn btn-default" id="clear">Clear</button>
+                            </p>
                             <div class="hidden">
                                 <input type="text" name="pwId" id="password-id" placeholder="Id">
                                 <input type="text" name="pwGroup" id="password-group" placeholder="Group">
@@ -47,14 +55,10 @@
                                 <input type="text" name="pwSkipped" id="password-skipped" value="false">
                                 <p id="control"></p>
                             </div>
-                            <p>
-                                <button type="button" class="btn btn-default" id="clear">Clear</button>
-                            </p>
-
                         </section>
-                        <p>
+                        <p><a href="#questions" class="next">
                             <button type="button" class="btn btn-warning btn-block hidden" id="forgot-password">I forgot the password from last time - skip this step</button>
-                        </p>
+                        </a></p>
                         <a href="#questions" id="questionsNext" class="next">
                             <button type="button" class="btn btn-primary btn-lg btn-block">Next</button>
                         </a>
@@ -363,27 +367,31 @@
             </div>
         </div>
     </div>
-  <!--###### Message for desktop browser #####-->
-<div class="container hidden bg-danger" id="desktop">
-    <div class="row">
-        <div class="col-xs-8 col-xs-offset-2 col-lg-6 col-lg-offset-3">
-            <h3>You seem to be on a desktop browser.</h3>
+    <!--###### Message for desktop browser #####-->
+    <div class="container hidden bg-danger" id="desktop">
+        <div class="row">
+            <div class="col-xs-8 col-xs-offset-2 col-lg-6 col-lg-offset-3">
+                <h3>You seem to be on a desktop browser.</h3>
 
-            <p>This is a mobile study. Please come on the same smartphone or tablet you used for the first part of this study.</p>
+                <p>This is a mobile study. Please come on the same smartphone or tablet you used for the first part of this study.</p>
 
-            <p><strong>Just grab a mobile device and get back here fast by using this link:</strong>
-                <button type="button" class="btn btn-default btn-lg"><a href="http://goo.gl/CJAf1B">goo.gl/CJAf1B</a>
-                </button>
-            </p>
+                <p><strong>Just grab a mobile device and get back here fast by using this link:</strong>
+                    <button type="button" class="btn btn-default btn-lg"><a href="http://goo.gl/CJAf1B">goo.gl/CJAf1B</a>
+                    </button>
+                </p>
+            </div>
         </div>
     </div>
-</div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.caret.js"></script>
     <script src="js/survey2.js"></script>
+
+    <script src="//cdn.jsdelivr.net/emojione/2.1.0/lib/js/emojione.min.js"></script>
+
+    <script src="jquery-emojiarea-master/jquery.emojiarea.js"></script>
+    <script src="jquery-emojiarea-master/packs/basic/emojis.js"></script>
 </body>
 
 </html>
