@@ -128,7 +128,7 @@ function setUserData(password) {
 }
 
 $(document).ready(function () {
-    var password1 = $('#password-1');
+    var pwField1 = $('#password-1');
     var savedPassword = decodeURIComponent(getCookie('emojiPassword'));
     //alert(savedPassword);
     var realPassword = [];
@@ -139,15 +139,15 @@ $(document).ready(function () {
 
     /* check if mobile */
     if (isNotMobile.any()) {
-        //notMobileWarning();
+        notMobileWarning();
     }
     /* disable selection in input field */
     //$('.noselect').disableSelection();
 
     /* key events in input field - password */
-    password1.bind('keyup', function (event) {
+    pwField1.bind('keyup', function (event) {
         var key = event.keyCode || event.which;
-        var caretPos = updateCaret(password1);
+        var caretPos = updateCaret(pwField1);
 
         if (isPrevented(key)) {
             event.preventDefault();
@@ -156,13 +156,13 @@ $(document).ready(function () {
             if (realPassword.length === caretPos + 1) {
                 realPassword = remove(realPassword, caretPos);
             } else {
-                realPassword = removeAll(password1);
+                realPassword = removeAll(pwField1);
             }
         } else {
-            realPassword = add(password1, realPassword, caretPos);
+            realPassword = add(pwField1, realPassword, caretPos);
         }
         //testOutput(realPassword, caretPos, key);
-        setPlaceholder(password1, realPassword, caretPos);
+        setPlaceholder(pwField1, realPassword, caretPos);
     });
 
     /* button for clearing password fields */
@@ -182,7 +182,7 @@ $(document).ready(function () {
 
     /* next button for sections */
     $('#questionsNext').click(function () {
-        password1.closest('.form-group').removeClass('has-error');
+        pwField1.closest('.form-group').removeClass('has-error');
         if (savedPassword === realPassword.join('')) {
             //alert('all right');
             /* get group and id from last time + password */
@@ -190,7 +190,7 @@ $(document).ready(function () {
             $('#questions').removeClass('hidden');
             $('#password').addClass('hidden');
         } else {
-            password1.closest('.form-group').addClass('has-error');
+            pwField1.closest('.form-group').addClass('has-error');
             $('#forgot-password').removeClass('hidden');
         }
     });

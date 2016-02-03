@@ -17,6 +17,6 @@
     "tests"
   ],
   "dependencies": {
-    "zxcvbn": "^4.2.0"
+    "zxcvbn": "~4.2.0"
   }
 }

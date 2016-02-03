@@ -39,7 +39,7 @@ $valIdSurvey1,'$valBrowser',$valGroup,'$valPwSkipped',
 )";
 
 if (!isset($_COOKIE['emojiPasswordPart2'])) {
-    //header("Location: ../thank-you.html");
+    header("Location: ../thank-you.html");
 
     /*##### make connection #####*/
     include('connection.php');

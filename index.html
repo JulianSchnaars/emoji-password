@@ -11,860 +11,827 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/emojione/2.1.0/assets/css/emojione.min.css" />
+
+    <link rel="stylesheet" href="jquery-emojiarea-master/jquery.emojiarea.css">
     <link href="css/styles.css" rel="stylesheet">
+    <link href="css/fontello.css" rel="stylesheet">
 </head>
 
 <body>
-<div class="container" id="mobile">
-    <div class="row">
-        <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
-            <form id="password-form" action="./php/send.php" method="post" autocomplete="off">
-                <!-- ##### INTRODUCTION ##### -->
-                <section id="introduction" class="section">
-                    <a target="_blank" href="http://www.medien.ifi.lmu.de/"><img
-                            src="img/500px-LMU_Muenchen_Logo.svg.png" alt="LMU Logo" id="lmu-logo"
-                            class="pull-right"></a>
+    <div class="container" id="mobile">
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+                <form id="password-form" action="./php/send.php" method="post" autocomplete="off">
+                    <!-- ##### INTRODUCTION ##### -->
+                    <section id="introduction" class="section">
+                        <a target="_blank" href="http://www.medien.ifi.lmu.de/"><img src="img/500px-LMU_Muenchen_Logo.svg.png" alt="LMU Logo" id="lmu-logo" class="pull-right"></a>
 
-                    <h3>Introduction
+                        <h3>Introduction
                         <small>(1/4)</small>
                     </h3>
-                    <section>
-                        <hr>
-                        <p>We study the usability of passwords. In this survey, you will be asked to create a password.
-                            Please behave as naturally as possible, so please answer intuitively. There are no correct
-                            or wrong answers. As such, there are no “good” and “bad” passwords.</p>
+                        <section>
+                            <hr>
+                            <p>We study the usability of passwords. In this survey, you will be asked to create a password. Please behave as naturally as possible, so please answer intuitively. There are no correct or wrong answers. As such, there are no “good” and “bad” passwords.</p>
 
-                        <p></p>
+                            <p></p>
 
-                        <p class="highlight">Do not use a password that you already use elsewhere! </p>
+                            <p class="highlight">Do not use a password that you already use elsewhere! </p>
 
-                        <p>
-                            To help you do this, imagine you were asked to choose a new password for your primary email account, because the
-                            old one has expired.
-                        </p>
+                            <p>
+                                To help you do this, imagine you were asked to choose a new password for your primary email account, because the old one has expired.
+                            </p>
 
-                        <p>
-                            We will not store any data that can be linked back to you. Neither will we store your
-                            password.
-                            We are only going to collect some information about it, for example how long it is.
-                        </p>
-                        <p></p>
-                        <p>
-                            <small>By clicking 'Start' I accept these conditions and agree that cookies will be stored
+                            <p>
+                                We will not store any data that can be linked back to you. Neither will we store your password. We are only going to collect some information about it, for example how long it is.
+                            </p>
+                            <p></p>
+                            <p>
+                                <small>By clicking 'Start' I accept these conditions and agree that cookies will be stored
                                 on my device for a limited time.
                             </small>
-                        </p>
+                            </p>
+                        </section>
+                        <a href="#password" id="start" class="next">
+                            <button type="button" class="btn btn-primary btn-lg btn-block">Start</button>
+                        </a>
                     </section>
-                    <a href="#password" id="start" class="next">
-                        <button type="button" class="btn btn-primary btn-lg btn-block">Start</button>
-                    </a>
-                </section>
-                <!-- ##### PASSWORD INPUT ##### -->
-                <section id="password" class="section hidden">
-                    <h3>Password
+                    <!-- ##### PASSWORD INPUT ##### -->
+                    <section id="password" class="section hidden">
+                        <h3>Password
                         <small>(2/4)</small>
                     </h3>
-                    <section>
-                        <hr>
-                        <p style="margin-bottom:20px;">
-                            <img src="img/email-secure.png" style="width:50%; display:block; margin:auto;"/>
-
-                            Imagine you had to change the password for your primary email
-                            account.
-                            <br>
-                            <small>(Note: If you have issues with the password field, please make sure you are using
+                        <section>
+                            <hr>
+                            <p style="margin-bottom:20px;">
+                                <img src="img/email-secure.png" style="max-height:150px; display:block; margin-bottom:20px;" class="center-block" /> Imagine you had to change the password for your primary email account.
+                                <br>
+                                <small>(Note: If you have issues with the password field, please make sure you are using
                                 Google Chrome or Apple Safari)
                             </small>
-                        </p>
-                        <p><strong>Please create a password that meets the following requirements:</strong></p>
+                            </p>
+                            <p><strong>Please create a password that meets the following requirements:</strong></p>
 
-                        <div class="group-0">
-                            <ul class="help-block">
-                                <li class="policy-length">12 characters or more</li>
-                                <li class="policy-letters">upper and lowercase letters</li>
-                                <li class="policy-numbers">1 number or more</li>
-                                <li class="policy-other">1 special character or more</li>
-                            </ul>
-                        </div>
-                        <div class="group-1">
-                            <ul class="help-block">
-                                <li class="policy-length">12 characters or more</li>
-                                <li class="policy-letters">upper and lowercase letters</li>
-                                <li class="policy-numbers">1 number or more</li>
-                                <li class="policy-other">1 emoji character or more <a target="_blank" href="emoji-info.html">(how to)</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="form-group" style="margin-top:20px;">
-                            <label for="password-1">Password:</label>
-                            <input type="text" class="form-control password-input" id="password-1" autocorrect="off"
-                                   autocapitalize="off" spellcheck="false" placeholder="Password">
-                        </div>
-                        <div class="form-group">
-                            <label for="password-2">Confirm Password:</label>
-                            <input type="text" unselectable="on" autocorrect="off" autocapitalize="off"
-                                   spellcheck="false" class="form-control password-input" id="password-2"
-                                   placeholder="Confirm Password">
-                        </div>
+                            <div class="group-0">
+                                <ul class="help-block">
+                                    <li class="policy-length">12 characters or more</li>
+                                    <li class="policy-letters">upper and lowercase letters</li>
+                                    <li class="policy-numbers">1 number or more</li>
+                                    <li class="policy-other">1 special character or more</li>
+                                </ul>
+                            </div>
+                            <div class="group-1">
+                                <ul class="help-block">
+                                    <li class="policy-length">12 characters or more</li>
+                                    <li class="policy-letters">upper and lowercase letters</li>
+                                    <li class="policy-numbers">1 number or more</li>
+                                    <li class="policy-other">1 emoji character or more <a target="_blank" href="emoji-info.html">(how to)</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="form-group" style="margin-top:30px;">
+                                <label for="password-1">Password: </label>
+                                <input type="password" unselectable="on" autocorrect="off" autocapitalize="off" spellcheck="false" class="form-control password-input" id="password-1" placeholder="Password" data-emojiable="true">
+                            </div>
+                            <div class="form-group" style="margin-bottom:0px;">
+                                <label for="password-2">Confirm Password:</label>
+                                <input type="text" unselectable="on" autocorrect="off" autocapitalize="off" spellcheck="false" class="form-control password-input" id="password-2" placeholder="Confirm Password">
+                            </div>
 
-                        <!-- Hidden fields for password metadata -->
-                        <div class="hidden">
-                            <input type="text" name="pwGroup" id="password-group" placeholder="Group">
-                            <input type="text" name="pwLength" id="password-length" placeholder="Length">
-                            <input type="text" name="pwNumbers" id="password-numbers" placeholder="Numbers">
-                            <input type="text" name="pwLower" id="password-lower" placeholder="Letters Lower">
-                            <input type="text" name="pwUpper" id="password-upper" placeholder="Letters Upper">
-                            <input type="text" name="pwSpecial" id="password-special" placeholder="Special Characters">
-                            <input type="text" name="pwEmojiNr" id="password-emojiNr" placeholder="Emoji Nr">
-                            <input type="text" name="pwEmoji" id="password-emoji" placeholder="Emoji">
-                            <input type="text" name="pwScore" id="password-score" placeholder="Score">
-                            <input type="text" name="pwGuesses" id="password-guesses" placeholder="Guesses">
-                            <input type="text" name="pwReal" id="password-real" placeholder="Password">
+                            <!-- Hidden fields for password metadata -->
+                            <div class="hidden">
+                                <input type="text" name="pwGroup" id="password-group" placeholder="Group">
+                                <input type="text" name="pwLength" id="password-length" placeholder="Length">
+                                <input type="text" name="pwNumbers" id="password-numbers" placeholder="Numbers">
+                                <input type="text" name="pwLower" id="password-lower" placeholder="Letters Lower">
+                                <input type="text" name="pwUpper" id="password-upper" placeholder="Letters Upper">
+                                <input type="text" name="pwSpecial" id="password-special" placeholder="Special Characters">
+                                <input type="text" name="pwEmojiNr" id="password-emojiNr" placeholder="Emoji Nr">
+                                <input type="text" name="pwEmoji" id="password-emoji" placeholder="Emoji">
+                                <input type="text" name="pwScore" id="password-score" placeholder="Score">
+                                <input type="text" name="pwGuesses" id="password-guesses" placeholder="Guesses">
+                                <input type="text" name="pwReal" id="password-real" placeholder="Password">
 
-                            <p id="control"></p>
-                        </div>
-                        <!--<div class="checkbox">
-                <label>
-                    <input type="checkbox"> Check me out
-                </label>
-            </div>-->
-                        <p>
-                            <button type="button" class="btn btn-default" id="clear">Clear</button>
-                        </p>
+                                <p id="control"></p>
+                            </div>
+                            <p style="height: 50px;">
+                                <button type="button" class="btn btn-default pull-left" id="clear">Clear</button>
+                            </p>
+                        </section>
+                        <a href="#questions" id="questionsNext" class="next">
+                            <button type="button" class="btn btn-primary btn-lg btn-block">Next</button>
+                        </a>
                     </section>
-                    <a href="#questions" id="questionsNext" class="next">
-                        <button type="button" class="btn btn-primary btn-lg btn-block">Next</button>
-                    </a>
-                </section>
-                <!-- ##### QUESTIONNAIRE ##### -->
-                <section id="questions" class="section hidden">
-                    <h3>Questionnaire
+                    <!-- ##### QUESTIONNAIRE ##### -->
+                    <section id="questions" class="section hidden">
+                        <h3>Questionnaire
                         <small>(3/4)</small>
                     </h3>
-                    <hr>
-                    <h4>Personal Behavior</h4>
-                    <p><strong>What can you say about the password you just created?</strong></p>
-                    <section>
                         <hr>
-                        <p>I put as much effort and thought into the creation, as if I had to come up with a new
-                            password for my email account.</p>
+                        <h4>Personal Behavior</h4>
+                        <p><strong>What can you say about the password you just created?</strong></p>
+                        <section>
+                            <hr>
+                            <p>I put as much effort and thought into the creation, as if I had to come up with a new password for my email account.</p>
 
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="pwCreationEffort" value="Strongly agree" required> Strongly
-                                agree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="pwCreationEffort" value="Agree"> Agree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="pwCreationEffort" value="Neutral"> Neutral
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="pwCreationEffort" value="Disagree"> Disagree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="pwCreationEffort" value="Strongly Agree"> Strongly Agree
-                            </label>
-                        </div>
-                    </section>
-                    <section>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="pwCreationEffort" value="Strongly agree" required> Strongly agree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="pwCreationEffort" value="Agree"> Agree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="pwCreationEffort" value="Neutral"> Neutral
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="pwCreationEffort" value="Disagree"> Disagree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="pwCreationEffort" value="Strongly Agree"> Strongly Agree
+                                </label>
+                            </div>
+                        </section>
+                        <section>
+                            <hr>
+                            <h4>Feedback</h4>
+                            <p>It was difficult for me to find a password that fitted the given requirements.</p>
+
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="choosingPwDifficult" value="Strongly agree" required> Strongly agree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="choosingPwDifficult" value="Agree"> Agree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="choosingPwDifficult" value="Neutral"> Neutral
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="choosingPwDifficult" value="Disagree"> Disagree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="choosingPwDifficult" value="Strongly disagree"> Strongly disagree
+                                </label>
+                            </div>
+                        </section>
+                        <section>
+                            <hr>
+                            <p>Choosing the password was annoying.</p>
+
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="choosingPwAnnoying" value="Strongly agree" required> Strongly agree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="choosingPwAnnoying" value="Agree"> Agree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="choosingPwAnnoying" value="Neutral"> Neutral
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="choosingPwAnnoying" value="Disagree"> Disagree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="choosingPwAnnoying" value="Strongly Agree"> Strongly Agree
+                                </label>
+                            </div>
+                        </section>
+                        <section>
+                            <hr>
+                            <p>Coming up with a password was fun.</p>
+
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="choosingPwFun" value="Strongly agree" required> Strongly agree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="choosingPwFun" value="Agree"> Agree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="choosingPwFun" value="Neutral"> Neutral
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="choosingPwFun" value="Disagree"> Disagree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="choosingPwFun" value="Strongly disagree"> Strongly disagree
+                                </label>
+                            </div>
+                        </section>
+                        <section>
+                            <hr>
+                            <p>I think I created a password that I can remember easily.</p>
+
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="easilyMemorable" value="Strongly agree" required> Strongly agree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="easilyMemorable" value="Agree"> Agree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="easilyMemorable" value="Neutral"> Neutral
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="easilyMemorable" value="Disagree"> Disagree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="easilyMemorable" value="Strongly disagree"> Strongly disagree
+                                </label>
+                            </div>
+                        </section>
                         <hr>
-                        <h4>Feedback</h4>
-                        <p>It was difficult for me to find a password that fitted the given requirements.</p>
+                        <h4>Communication Habits</h4>
+                        <p><strong>What can you say about the way you communicate?</strong></p>
+                        <section>
+                            <hr>
+                            <p>My favourite way of staying in touch is...</p>
 
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="choosingPwDifficult" value="Strongly agree" required> Strongly
-                                agree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="choosingPwDifficult" value="Agree"> Agree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="choosingPwDifficult" value="Neutral"> Neutral
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="choosingPwDifficult" value="Disagree"> Disagree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="choosingPwDifficult" value="Strongly disagree"> Strongly
-                                disagree
-                            </label>
-                        </div>
-                    </section>
-                    <section>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="communication" value="Letter" required> writing a letter or postcard.
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="communication" value="Calling"> calling over the phone.
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="communication" value="Video calling"> video calling.
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="communication" value="Messaging"> messaging (SMS, WhatsApp, Facebook, etc.).
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="communication" value="Other"> not mentioned here.
+                                </label>
+                            </div>
+                        </section>
+                        <section>
+                            <hr>
+                            <p>I write messages on my phone...</p>
+
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="messagesOnPhone" value="Constantly" required> constantly.
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="messagesOnPhone" value="Often"> often.
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="messagesOnPhone" value="Sometimes"> sometimes.
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="messagesOnPhone" value="When needed"> only when I need to.
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="messagesOnPhone" value="Never"> never.
+                                </label>
+                            </div>
+                        </section>
+                        <section>
+                            <hr>
+                            <p>I use emoji characters (😀👻) ...</p>
+
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="emojiUseGeneral" value="In every message" required> in every message.
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="emojiUseGeneral" value="Often"> most of the time.
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="emojiUseGeneral" value="Sometimes"> sometimes
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="emojiUseGeneral" value="Rarely"> rarely.
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="emojiUseGeneral" value="Not at all"> not at all.
+                                </label>
+                            </div>
+                        </section>
                         <hr>
-                        <p>Choosing the password was annoying.</p>
-
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="choosingPwAnnoying" value="Strongly agree" required> Strongly
-                                agree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="choosingPwAnnoying" value="Agree"> Agree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="choosingPwAnnoying" value="Neutral"> Neutral
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="choosingPwAnnoying" value="Disagree"> Disagree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="choosingPwAnnoying" value="Strongly Agree"> Strongly Agree
-                            </label>
-                        </div>
-                    </section>
-                    <section>
-                        <hr>
-                        <p>Coming up with a password was fun.</p>
-
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="choosingPwFun" value="Strongly agree" required> Strongly agree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="choosingPwFun" value="Agree"> Agree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="choosingPwFun" value="Neutral"> Neutral
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="choosingPwFun" value="Disagree"> Disagree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="choosingPwFun" value="Strongly disagree"> Strongly disagree
-                            </label>
-                        </div>
-                    </section>
-                    <section>
-                        <hr>
-                        <p>I think I created a password that I can remember easily.</p>
-
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="easilyMemorable" value="Strongly agree" required> Strongly
-                                agree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="easilyMemorable" value="Agree"> Agree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="easilyMemorable" value="Neutral"> Neutral
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="easilyMemorable" value="Disagree"> Disagree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="easilyMemorable" value="Strongly disagree"> Strongly disagree
-                            </label>
-                        </div>
-                    </section>
-                    <hr>
-                    <h4>Communication Habits</h4>
-                    <p><strong>What can you say about the way you communicate?</strong></p>
-                    <section>
-                        <hr>
-                        <p>My favourite way of staying in touch is...</p>
-
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="communication" value="Letter" required> writing a letter or
-                                postcard.
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="communication" value="Calling"> calling over the phone.
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="communication" value="Video calling"> video calling.
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="communication" value="Messaging"> messaging (SMS, WhatsApp,
-                                Facebook, etc.).
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="communication" value="Other"> not mentioned here.
-                            </label>
-                        </div>
-                    </section>
-                    <section>
-                        <hr>
-                        <p>I write messages on my phone...</p>
-
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="messagesOnPhone" value="Constantly" required> constantly.
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="messagesOnPhone" value="Often"> often.
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="messagesOnPhone" value="Sometimes"> sometimes.
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="messagesOnPhone" value="When needed"> only when I need to.
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="messagesOnPhone" value="Never"> never.
-                            </label>
-                        </div>
-                    </section>
-                    <section>
-                        <hr>
-                        <p>I use emoji characters (😀👻) ...</p>
-
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="emojiUseGeneral" value="In every message" required> in every
-                                message.
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="emojiUseGeneral" value="Often"> most of the time.
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="emojiUseGeneral" value="Sometimes"> sometimes
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="emojiUseGeneral" value="Rarely"> rarely.
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="emojiUseGeneral" value="Not at all"> not at all.
-                            </label>
-                        </div>
-                    </section>
-                    <hr>
-                    <h4>
+                        <h4>
                         Password Management
                     </h4>
-                    <p><strong>
+                        <p><strong>
                         How do you manage your personal passwords?</strong>
-                    </p>
-                    <section>
-                        <hr>
-                        <p>I have a password or set of passwords I reuse in different places.</p>
+                        </p>
+                        <section>
+                            <hr>
+                            <p>I have a password or set of passwords I reuse in different places.</p>
 
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="passwordReuse" value="Yes" required> Yes
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="passwordReuse" value="No"> No
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="passwordReuse" value="No Answer"> I prefer not to answer
-                            </label>
-                        </div>
-                    </section>
-                    <section>
-                        <hr>
-                        <p>I have a password that I use for different accounts with a slight modification for each
-                            account.</p>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="passwordReuse" value="Yes" required> Yes
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="passwordReuse" value="No"> No
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="passwordReuse" value="No Answer"> I prefer not to answer
+                                </label>
+                            </div>
+                        </section>
+                        <section>
+                            <hr>
+                            <p>I have a password that I use for different accounts with a slight modification for each account.
+                            </p>
 
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="passwordReuseSlightModification" value="Yes" required> Yes
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="passwordReuseSlightModification" value="No"> No
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="passwordReuseSlightModification" value="No Answer"> I prefer
-                                not to answer
-                            </label>
-                        </div>
-                    </section>
-                    <section>
-                        <hr>
-                        <p>When choosing a password I think of a sentence or phrase to help me remember my password.</p>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="passwordReuseSlightModification" value="Yes" required> Yes
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="passwordReuseSlightModification" value="No"> No
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="passwordReuseSlightModification" value="No Answer"> I prefer not to answer
+                                </label>
+                            </div>
+                        </section>
+                        <section>
+                            <hr>
+                            <p>When choosing a password I think of a sentence or phrase to help me remember my password.</p>
 
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="pwPhrase" value="Yes" required> Yes
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="pwPhrase" value="No"> No
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="pwPhrase" value="Prefer not to answer"> I prefer not to answer
-                            </label>
-                        </div>
-                    </section>
-                    <section>
-                        <hr>
-                        <p>When choosing a password I think of a picture or scene to help me remember my password.</p>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="pwPhrase" value="Yes" required> Yes
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="pwPhrase" value="No"> No
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="pwPhrase" value="Prefer not to answer"> I prefer not to answer
+                                </label>
+                            </div>
+                        </section>
+                        <section>
+                            <hr>
+                            <p>When choosing a password I think of a picture or scene to help me remember my password.</p>
 
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="pwPicture" value="Yes" required> Yes
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="pwPicture" value="No"> No
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="pwPicture" value="Prefer not to answer"> I prefer not to
-                                answer
-                            </label>
-                        </div>
-                    </section>
-                    <section>
-                        <hr>
-                        <p>When choosing a password I think of a story to help me remember my password.</p>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="pwPicture" value="Yes" required> Yes
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="pwPicture" value="No"> No
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="pwPicture" value="Prefer not to answer"> I prefer not to answer
+                                </label>
+                            </div>
+                        </section>
+                        <section>
+                            <hr>
+                            <p>When choosing a password I think of a story to help me remember my password.</p>
 
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="pwStory" value="Yes" required> Yes
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="pwStory" value="No"> No
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="pwStory" value="No Answer"> I prefer not to answer
-                            </label>
-                        </div>
-                    </section>
-                    <hr>
-                    <h4>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="pwStory" value="Yes" required> Yes
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="pwStory" value="No"> No
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="pwStory" value="No Answer"> I prefer not to answer
+                                </label>
+                            </div>
+                        </section>
+                        <hr>
+                        <h4>
                         Emojis inside Passwords
                     </h4>
-                    <p><strong>Please tell us how you feel about the following questions.</strong> <br>Remember: Answer
-                        intuitively - there are no correct or wrong answers.</p>
-                    <section>
-                        <hr>
-                        <p>I think emoji characters would make it easier to create passwords that are based on a story /
-                            an image / a phrase.</p>
+                        <p><strong>Please tell us how you feel about the following questions.</strong>
+                            <br>Remember: Answer intuitively - there are no correct or wrong answers.</p>
+                        <section>
+                            <hr>
+                            <p>I think emoji characters would make it easier to create passwords that are based on a story / an image / a phrase.</p>
 
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="emojiPhraseEasier" value="Strongly agree" required> Strongly
-                                agree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="emojiPhraseEasier" value="Agree"> Agree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="emojiPhraseEasier" value="Neutral"> Neutral
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="emojiPhraseEasier" value="Disagree"> Disagree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="emojiPhraseEasier" value="Strongly disagree"> Strongly
-                                disagree
-                            </label>
-                        </div>
-                    </section>
-                    <section>
-                        <hr>
-                        <p>If passwords required emoji instead of special characters, I think it would be easier for me
-                            to use and remember them.</p>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="emojiPhraseEasier" value="Strongly agree" required> Strongly agree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="emojiPhraseEasier" value="Agree"> Agree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="emojiPhraseEasier" value="Neutral"> Neutral
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="emojiPhraseEasier" value="Disagree"> Disagree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="emojiPhraseEasier" value="Strongly disagree"> Strongly disagree
+                                </label>
+                            </div>
+                        </section>
+                        <section>
+                            <hr>
+                            <p>If passwords required emoji instead of special characters, I think it would be easier for me to use and remember them.</p>
 
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="emojiVsSpecial" value="Strongly agree" required> Strongly
-                                agree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="emojiVsSpecial" value="Agree"> Agree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="emojiVsSpecial" value="Neutral"> Neutral
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="emojiVsSpecial" value="Disagree"> Disagree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="emojiVsSpecial" value="Strongly disagree"> Strongly disagree
-                            </label>
-                        </div>
-                    </section>
-                    <section>
-                        <hr>
-                        <p>If my main email account required a password like the one I created in this study, it would
-                            make my email account more secure.</p>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="emojiVsSpecial" value="Strongly agree" required> Strongly agree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="emojiVsSpecial" value="Agree"> Agree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="emojiVsSpecial" value="Neutral"> Neutral
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="emojiVsSpecial" value="Disagree"> Disagree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="emojiVsSpecial" value="Strongly disagree"> Strongly disagree
+                                </label>
+                            </div>
+                        </section>
+                        <section>
+                            <hr>
+                            <p>If my main email account required a password like the one I created in this study, it would make my email account more secure.</p>
 
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="isMoreSecure" value="Strongly agree" required> Strongly agree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="isMoreSecure" value="Agree"> Agree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="isMoreSecure" value="Neutral"> Neutral
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="isMoreSecure" value="Disagree"> Disagree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="isMoreSecure" value="Strongly disagree"> Strongly disagree
-                            </label>
-                        </div>
-                    </section>
-                    <section>
-                        <hr>
-                        <p>I would be annoyed if my main email account required a password like the one I had to create
-                            in this study.</p>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="isMoreSecure" value="Strongly agree" required> Strongly agree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="isMoreSecure" value="Agree"> Agree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="isMoreSecure" value="Neutral"> Neutral
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="isMoreSecure" value="Disagree"> Disagree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="isMoreSecure" value="Strongly disagree"> Strongly disagree
+                                </label>
+                            </div>
+                        </section>
+                        <section>
+                            <hr>
+                            <p>I would be annoyed if my main email account required a password like the one I had to create in this study.</p>
 
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="isAnnoying" value="Strongly agree" required> Strongly agree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="isAnnoying" value="Agree"> Agree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="isAnnoying" value="Neutral"> Neutral
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="isAnnoying" value="Disagree"> Disagree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="isAnnoying" value="Strongly disagree"> Strongly disagree
-                            </label>
-                        </div>
-                    </section>
-                    <section>
-                        <hr>
-                        <p>If my main email account required a password like the one described in this study, it would
-                            be easier for me to remember it.</p>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="isAnnoying" value="Strongly agree" required> Strongly agree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="isAnnoying" value="Agree"> Agree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="isAnnoying" value="Neutral"> Neutral
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="isAnnoying" value="Disagree"> Disagree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="isAnnoying" value="Strongly disagree"> Strongly disagree
+                                </label>
+                            </div>
+                        </section>
+                        <section>
+                            <hr>
+                            <p>If my main email account required a password like the one described in this study, it would be easier for me to remember it.</p>
 
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="isEasier" value="Strongly agree" required> Strongly agree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="isEasier" value="Agree"> Agree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="isEasier" value="Neutral"> Neutral
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="isEasier" value="Disagree"> Disagree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="isEasier" value="Strongly disagree"> Strongly disagree
-                            </label>
-                        </div>
-                    </section>
-                    <section>
-                        <hr>
-                        <p>I think logging in to an account is...</p>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="isEasier" value="Strongly agree" required> Strongly agree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="isEasier" value="Agree"> Agree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="isEasier" value="Neutral"> Neutral
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="isEasier" value="Disagree"> Disagree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="isEasier" value="Strongly disagree"> Strongly disagree
+                                </label>
+                            </div>
+                        </section>
+                        <section>
+                            <hr>
+                            <p>I think logging in to an account is...</p>
 
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="desktopVsMobile" value="Desktop" required> easier on a desktop
-                                computer.
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="desktopVsMobile" value="Mobile"> easier on a smartphone.
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="desktopVsMobile" value="Neutral"> independent of the device.
-                            </label>
-                        </div>
-                    </section>
-                    <section>
-                        <hr>
-                        <p>I use as few special characters as possible in my password on purpose, because it is
-                            difficult to type them on mobile keyboards.</p>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="desktopVsMobile" value="Desktop" required> easier on a desktop computer.
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="desktopVsMobile" value="Mobile"> easier on a smartphone.
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="desktopVsMobile" value="Neutral"> independent of the device.
+                                </label>
+                            </div>
+                        </section>
+                        <section>
+                            <hr>
+                            <p>I use as few special characters as possible in my password on purpose, because it is difficult to type them on mobile keyboards.</p>
 
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="specialCharactersDifficultOnMobile" value="Strongly agree"
-                                       required> Strongly agree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="specialCharactersDifficultOnMobile" value="Agree"> Agree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="specialCharactersDifficultOnMobile" value="Neutral"> Neutral
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="specialCharactersDifficultOnMobile" value="Disagree"> Disagree
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="specialCharactersDifficultOnMobile" value="Strongly disagree">
-                                Strongly disagree
-                            </label>
-                        </div>
-                    </section>
-                    <hr>
-                    <h4>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="specialCharactersDifficultOnMobile" value="Strongly agree" required> Strongly agree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="specialCharactersDifficultOnMobile" value="Agree"> Agree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="specialCharactersDifficultOnMobile" value="Neutral"> Neutral
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="specialCharactersDifficultOnMobile" value="Disagree"> Disagree
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="specialCharactersDifficultOnMobile" value="Strongly disagree"> Strongly disagree
+                                </label>
+                            </div>
+                        </section>
+                        <hr>
+                        <h4>
                         Account usage
                     </h4>
-                    <p><strong>These last questions pertain to your real online identity.</strong></p>
-                    <section>
-                        <hr>
-                        <p>How many accounts do you have that you regularly log into? (At least once a week)</p>
-                        <input type="number" name="nrAccounts" class="form-control" required>
-                    </section>
-                    <section>
-                        <hr>
-                        <p>How many of your passwords do you regularly type on mobile devices?</p>
-                        <input type="number" name="nrAccountsMobile" class="form-control" required>
-                    </section>
-                    <section>
-                        <hr>
-                        <p>How many of your accounts provide an alternative/different authentication method (e.g. a PIN)
-                            for their mobile websites/app?</p>
+                        <p><strong>These last questions pertain to your real online identity.</strong></p>
+                        <section>
+                            <hr>
+                            <p>How many accounts do you have that you regularly log into? (At least once a week)</p>
+                            <input type="number" name="nrAccounts" class="form-control" required>
+                        </section>
+                        <section>
+                            <hr>
+                            <p>How many of your passwords do you regularly type on mobile devices?</p>
+                            <input type="number" name="nrAccountsMobile" class="form-control" required>
+                        </section>
+                        <section>
+                            <hr>
+                            <p>How many of your accounts provide an alternative/different authentication method (e.g. a PIN) for their mobile websites/app?</p>
 
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="altAuthenticationMobile" value="None" required> None
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="altAuthenticationMobile" value="Some"> Some
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="altAuthenticationMobile" value="Most"> Most
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="altAuthenticationMobile" value="All"> All
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="altAuthenticationMobile" value="Dont know"> I don't know
-                            </label>
-                        </div>
-                    </section>
-                    <section>
-                        <hr>
-                        <p>Thinking about the real password you use for your primary email account, how many of the
-                            following does it contain? Write "0" if there are none.
-                        </p>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="altAuthenticationMobile" value="None" required> None
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="altAuthenticationMobile" value="Some"> Some
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="altAuthenticationMobile" value="Most"> Most
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="altAuthenticationMobile" value="All"> All
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="altAuthenticationMobile" value="Dont know"> I don't know
+                                </label>
+                            </div>
+                        </section>
+                        <section>
+                            <hr>
+                            <p>Thinking about the real password you use for your primary email account, how many of the following does it contain? Write "0" if there are none.
+                            </p>
 
-                        <div class="form-group">
-                            <label for="realPwUpper">Uppercase letters:</label>
-                            <input type="number" name="realPwUpper" class="form-control" id="realPwUpper" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="realPwLower">Lowercase letters:</label>
-                            <input type="number" name="realPwLower" class="form-control" id="realPwLower" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="realPwNumbers">Numbers:</label>
-                            <input type="number" name="realPwNumbers" class="form-control" id="realPwNumbers" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="realPwSpecial">Special characters:</label>
-                            <input type="number" name="realPwSpecial" class="form-control" id="realPwSpecial" required>
-                        </div>
-                    </section>
+                            <div class="form-group">
+                                <label for="realPwUpper">Uppercase letters:</label>
+                                <input type="number" name="realPwUpper" class="form-control" id="realPwUpper" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="realPwLower">Lowercase letters:</label>
+                                <input type="number" name="realPwLower" class="form-control" id="realPwLower" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="realPwNumbers">Numbers:</label>
+                                <input type="number" name="realPwNumbers" class="form-control" id="realPwNumbers" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="realPwSpecial">Special characters:</label>
+                                <input type="number" name="realPwSpecial" class="form-control" id="realPwSpecial" required>
+                            </div>
+                        </section>
 
-                    <a href="#personal" id="personalNext" class="next">
-                        <button type="button" class="btn btn-primary btn-lg btn-block">Next</button>
-                    </a>
-                </section>
-                <!-- ##### PERSONAL INFORMATION ##### -->
-                <section id="personal" class="section hidden">
-                    <h3>Demographic Questions
+                        <a href="#personal" id="personalNext" class="next">
+                            <button type="button" class="btn btn-primary btn-lg btn-block">Next</button>
+                        </a>
+                    </section>
+                    <!-- ##### PERSONAL INFORMATION ##### -->
+                    <section id="personal" class="section hidden">
+                        <h3>Demographic Questions
                         <small>(4/4)</small>
                     </h3>
-                    <section>
-                        <hr>
-                        <p>What is you gender?</p>
+                        <section>
+                            <hr>
+                            <p>What is you gender?</p>
 
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="gender" value="male" required> Male
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="gender" value="female"> Female
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="gender" value="none"> I prefer not to answer.
-                            </label>
-                        </div>
-                    </section>
-                    <section>
-                        <hr>
-                        <p>How old are you?</p>
-                        <input type="number" name="age" class="form-control" placeholder="Your age" required>
-                    </section>
-                    <section>
-                        <hr>
-                        <p>Which country do you live in?</p>
-                        <input type="text" name="country" class="form-control" placeholder="Your country" required>
-                    </section>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="gender" value="male" required> Male
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="gender" value="female"> Female
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="gender" value="none"> I prefer not to answer.
+                                </label>
+                            </div>
+                        </section>
+                        <section>
+                            <hr>
+                            <p>How old are you?</p>
+                            <input type="number" name="age" class="form-control" placeholder="Your age" required>
+                        </section>
+                        <section>
+                            <hr>
+                            <p>Which country do you live in?</p>
+                            <input type="text" name="country" class="form-control" placeholder="Your country" required>
+                        </section>
 
-                    <div class="next">
-                        <button type="submit" class="btn btn-warning btn-lg btn-block" id="submit">Send</button>
-                    </div>
-                </section>
-            </form>
+                        <div class="next">
+                            <button type="submit" class="btn btn-warning btn-lg btn-block" id="submit">Send</button>
+                        </div>
+                    </section>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-<!--###### Message for desktop browser #####-->
-<div class="container hidden bg-danger" id="desktop">
-    <div class="row">
-        <div class="col-xs-8 col-xs-offset-2 col-lg-6 col-lg-offset-3">
-            <h3>You seem to be on a desktop browser.</h3>
+    <!--###### Message for desktop browser #####-->
+    <div class="container hidden bg-danger" id="desktop">
+        <div class="row">
+            <div class="col-xs-8 col-xs-offset-2 col-lg-6 col-lg-offset-3">
+                <h3>You seem to be on a desktop browser.</h3>
 
-            <p>This is a mobile study. Please come back on your smartphone or tablet.</p>
+                <p>This is a mobile study. Please come back on your smartphone or tablet.</p>
 
-            <p><strong>Just grab a mobile device and get back here fast by using this link:</strong>
-                <button type="button" class="btn btn-default btn-lg"><a href="http://goo.gl/9WtXiO">goo.gl/9WtXiO</a>
-                </button>
-            </p>
+                <p><strong>Just grab a mobile device and get back here fast by using this link:</strong>
+                    <button type="button" class="btn btn-default btn-lg"><a href="http://goo.gl/9WtXiO">goo.gl/9WtXiO</a>
+                    </button>
+                </p>
+            </div>
         </div>
     </div>
-</div>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="//code.jquery.com/jquery-2.2.0.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="bower_components/zxcvbn/dist/zxcvbn.js" async></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.caret.js" async></script>
-<script src="js/survey1.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="//code.jquery.com/jquery-2.2.0.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bower_components/zxcvbn/dist/zxcvbn.js" async></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.caret.js" async></script>
+    <script src="js/survey1.js"></script>
+
+    <script src="//cdn.jsdelivr.net/emojione/2.1.0/lib/js/emojione.min.js"></script>
+
+    <script src="jquery-emojiarea-master/jquery.emojiarea.js"></script>
+    <script src="jquery-emojiarea-master/packs/basic/emojis.js"></script>
 </body>
 
 </html>

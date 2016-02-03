@@ -1,5 +1,5 @@
 <?php
-//header("Location: ../thank-you.html");
+header("Location: ../thank-you.html");
 
 include('connection.php');
 

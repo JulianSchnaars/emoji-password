@@ -5,11 +5,11 @@
     var pwField = $('#password-1');
 })();*/
 //var regExEmoji = /[^\uDE00\uD83C-\uDFFF\uD83D]/g;
-var regExSpecial = /[^~`!#@\$%\^&*+=\-\[\]\\';,§\/{}()|\\":.<>\?≠¿¡“¶¢‘±œπæ–…∞µ~∫√ç≈¥å‚∂ƒ©ªº]/g;
-var regExLower = /[^a-zäöü]/g;
-var regExUpper = /[^A-ZÄÖÜ]/g;
-var regExNumber = /\D/g;
-var regExAll = /[~`!#@\$%\^&*+=\-\[\]\\';,§\/{}()|\\":.<>\?≠¿¡“¶¢‘±œπæ–…∞µ~∫√ç≈¥å‚∂ƒ©ªº a-zäöü A-ZÄÖÜ 0123456789]/g;
+var regExNotSpecial = /[^~`!#@\$%\^&*+=\-\[\]\\';,§\/{}()|\\":.<>\?≠¿¡“¶¢‘±œπæ–…∞µ~∫√ç≈¥å‚∂ƒ©ªº]/g;
+var regExNotLower = /[^a-zäöü]/g;
+var regExNotUpper = /[^A-ZÄÖÜ]/g;
+var regExNotNumber = /\D/g;
+var regExAllButEmoji = /[~`!#@\$%\^&*+=\-\[\]\\';,§\/{}()|\\":.<>\?≠¿¡“¶¢‘±œπæ–…∞µ~∫√ç≈¥å‚∂ƒ©ªº a-zäöü A-ZÄÖÜ 0123456789]/g;
 
 // This jQuery Plugin will disable text selection for Android and iOS devices.
 // Stackoverflow Answer: http://stackoverflow.com/a/2723677/1195891
@@ -54,12 +54,12 @@ function matchHeight() {
 
 function initGroup() {
     /* group 0 means no emoji in the password; group 1 means emoji are required */
-    var group = Math.floor(Math.random() * 2);
-    //var group = 0;
+    //var group = Math.floor(Math.random() * 2);
+    var group = 1;
     $('#password-group').val(group);
     if (group === 0) { // no emoji
         $('.group-1').addClass('hidden');
-        $('#password-1').prop('type', 'password');
+        $('.password-input').prop('type', 'password');
     } else { // emoji
         $('.group-0').addClass('hidden');
     }
@@ -75,14 +75,15 @@ function setMetadata(password) {
     var result = zxcvbn(passwordString);
 
     /* replace all but emoji */
-    var emojiOutput = encodeURIComponent(passwordString.replace(regExAll, 'x'));
+    var emojiOutput = encodeURIComponent(passwordString.replace(regExAllButEmoji, 'x'));
+    var emojiNr = passwordString.replace(regExAllButEmoji, '').length / 2;
 
     $('#password-length').val(password.length);
-    $('#password-numbers').val(passwordString.replace(regExNumber, '').length);
-    $('#password-lower').val((passwordString.replace(regExLower, '').length).toString());
-    $('#password-upper').val((passwordString.replace(regExUpper, '').length).toString());
-    $('#password-special').val((passwordString.replace(regExSpecial, '').length));
-    $('#password-emojiNr').val(emojiOutput.length/2);
+    $('#password-numbers').val(passwordString.replace(regExNotNumber, '').length);
+    $('#password-lower').val((passwordString.replace(regExNotLower, '').length).toString());
+    $('#password-upper').val((passwordString.replace(regExNotUpper, '').length).toString());
+    $('#password-special').val((passwordString.replace(regExNotSpecial, '').length));
+    $('#password-emojiNr').val(emojiNr);
     $('#password-emoji').val(emojiOutput);
     $('#password-score').val(result.score);
     $('#password-guesses').val(result.guesses);
@@ -151,13 +152,24 @@ function isPrevented(key) {
 }
 
 $(document).ready(function () {
-    var password1 = $('#password-1');
-    var password2 = $('#password-2');
+    var pwField1 = $('#password-1');
+    var pwField2 = $('#password-2');
+    var pwFields = $('.password-input');
     var realPassword = [];
     var realPasswordConfirm = [];
 
     /* initialize group */
     var group = initGroup();
+
+    /* emoji area */
+    $.emojiarea.path = '../jquery-emojiarea-master/packs/basic/images';
+    if (group === 1) {
+        pwFields.emojiarea({
+            wysiwyg: false,
+            buttonLabel: '',
+            buttonPosition: 'after'
+        });
+    }
 
     /* set min-hiehgt for different sections */
     matchHeight();
@@ -167,50 +179,13 @@ $(document).ready(function () {
     if (isNotMobile.any()) {
         //notMobileWarning();
     }
-    /* disable selection in input field */
-    //$('.noselect').disableSelection();
 
-    /* key events in input field - password */
-    password1.bind('keyup', function (event) {
-        var key = event.keyCode || event.which;
-        var caretPos = updateCaret(password1);
-
-        if (isPrevented(key)) {
-            event.preventDefault();
-            return false;
-        } else if (event.which === 8) { // backspace -> delete
-            if (realPassword.length === caretPos + 1) {
-                realPassword = remove(realPassword, caretPos);
-            } else {
-                realPassword = removeAll(password1);
-            }
-        } else {
-            realPassword = add(password1, realPassword, caretPos);
-        }
-        //testOutput(realPassword, realPasswordConfirm, caretPos, key);
-        //setMetadata(realPassword);
-        setPlaceholder(password1, realPassword, caretPos);
-    });
-
-    /* key events in input field - confirm password */
-    password2.bind('keyup', function (event) {
-        var key = event.keyCode || event.which;
-        var caretPos = updateCaret(password2);
-        if (isPrevented(key)) {
-            if (event.preventDefault) event.preventDefault(); //normal browsers
-            event.returnValue = false; //IE
-        } else if (event.which === 8) {
-            if (realPasswordConfirm.length === caretPos + 1) {
-                realPasswordConfirm = remove(realPasswordConfirm, caretPos);
-            } else {
-                realPasswordConfirm = removeAll(password2);
-            }
-        } else {
-            realPasswordConfirm = add(password2, realPasswordConfirm, caretPos);
-        }
-        //testOutput(realPassword, realPasswordConfirm, caretPos, key);
-        //setMetadata(realPassword);
-        setPlaceholder(password2, realPasswordConfirm, caretPos);
+    pwFields.on('touch click', function () {
+        $(this).caret($(this).val().length);
+    }).on('change', function () {
+        var input = $(this).val();
+        var output = (emojione.shortnameToUnicode(input)).replace(/\s/g, '');
+        $(this).val(output);
     });
 
     /* button for clearing password fields */
@@ -224,18 +199,18 @@ $(document).ready(function () {
     $('#questionsNext').click(function () {
         var policyError = $('.policy-error');
         policyError.removeClass('policy-error');
-        password2.closest('.form-group').removeClass('has-error');
+        pwField2.closest('.form-group').removeClass('has-error');
 
         if (realPassword.length >= 12) { // 1. min length of 12
             if (realPassword.join('') === realPasswordConfirm.join('')) { // passwords match
                 var passwordString = realPassword.join('');
-                var pwUpperCase = passwordString.replace(/[^a-zäöü]/g, '').length;
-                var pwLowerCase = passwordString.replace(/[^A-ZÄÖÜ]/g, '').length;
+                var pwUpperCase = passwordString.replace(regExNotLower, '').length;
+                var pwLowerCase = passwordString.replace(regExNotSpecial, '').length;
                 if (pwUpperCase > 0 && pwLowerCase > 0) { // 2. check for upper and lower case
-                    var pwNumbers = passwordString.replace(/\D/g, '').length; // 3. check for numbers
+                    var pwNumbers = passwordString.replace(regExNotNumber, '').length; // 3. check for numbers
                     if (pwNumbers > 0) {
                         if (group === 1) { //check if emoji group
-                            var pwEmojis = passwordString.replace(/[^\u2763\u2764\uDE00-\uDFFF]/g, '').length;
+                            var pwEmojis = passwordString.replace(regExAllButEmoji, '').length;
                             if (pwEmojis > 0) { // 4. check for emoji
                                 $('#questions').removeClass('hidden');
                                 $('#password').addClass('hidden');
@@ -244,7 +219,7 @@ $(document).ready(function () {
                                 $('.policy-other').addClass('policy-error');
                             }
                         } else { // special character group
-                            var pwSpecialChars = passwordString.replace(regExSpecial, '').length;
+                            var pwSpecialChars = passwordString.replace(regExNotSpecial, '').length;
                             if (pwSpecialChars > 0) { // 4. check for special ch
                                 $('#questions').removeClass('hidden');
                                 $('#password').addClass('hidden');
@@ -261,7 +236,7 @@ $(document).ready(function () {
                 }
             } else { // password do not match
                 //alert('Please check if your passwords match.');
-                password2.closest('.form-group').addClass('has-error');
+                pwField2.closest('.form-group').addClass('has-error');
             }
         } else {
             $('.policy-length').addClass('policy-error');

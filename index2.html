@@ -40,7 +40,7 @@
                                 <label for="password-1">Password:</label>
                                 <input type="text" unselectable="on" autocorrect="off" autocapitalize="off" spellcheck="false" class="form-control password-input" id="password-1" placeholder="Password">
                             </div>
-                            <div class=" ">
+                            <div class="hidden">
                                 <input type="text" name="pwId" id="password-id" placeholder="Id">
                                 <input type="text" name="pwGroup" id="password-group" placeholder="Group">
                                 <input type="text" name="pwReal" id="password-real" placeholder="Password">
@@ -60,7 +60,7 @@
                         </a>
                     </section>
                     <!-- ##### QUESTIONNAIRE ##### -->
-                    <section id="questions" class="section  ">
+                    <section id="questions" class="section hidden">
                         <hr>
                         <p><strong>Please answer the following questions honestly. There are no wrong or right answers.</strong></p>
                         <section>
@@ -363,18 +363,21 @@
             </div>
         </div>
     </div>
-    <!--###### Message for desktop browser #####-->
-    <div class="container hidden" id="desktop">
-        <div class="row">
-            <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3">
-                <h3>You seem to be on a desktop browser.</h3>
-                <p>This is a mobile study. Please come back on your smartphone or tablet.</p>
-                <p><strong>Just grab a mobile device and get back here fast by using this link:</strong>
-                    <button type="button" class="btn btn-default btn-lg"><a href="http://goo.gl/9WtXiO">goo.gl/9WtXiO</a></button>
-                </p>
-            </div>
+  <!--###### Message for desktop browser #####-->
+<div class="container hidden bg-danger" id="desktop">
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-2 col-lg-6 col-lg-offset-3">
+            <h3>You seem to be on a desktop browser.</h3>
+
+            <p>This is a mobile study. Please come on the same smartphone or tablet you used for the first part of this study.</p>
+
+            <p><strong>Just grab a mobile device and get back here fast by using this link:</strong>
+                <button type="button" class="btn btn-default btn-lg"><a href="http://goo.gl/CJAf1B">goo.gl/CJAf1B</a>
+                </button>
+            </p>
         </div>
     </div>
+</div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

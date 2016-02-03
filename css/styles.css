@@ -93,5 +93,36 @@ h2 {
 
 
 .keyboard-img-box {
+    width: 100%;
     margin-bottom: 30px;
 }
+.password-input {
+    float: left;
+    width: 90%;
+    margin-bottom: 30px;
+}
+
+/* ##### emoji input box ##### */
+.emoji-button {
+    background-image: url(../img/smiley.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    float: left;
+    width: 7%;
+    height: 33px;
+    margin-left: 1%;
+    text-align: center;
+
+}
+.form-group > label {
+    width: 100%;
+}
+
+.form-group {
+    min-height: 70px;
+}
+
+
+
+
