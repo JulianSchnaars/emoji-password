@@ -70,8 +70,8 @@ $(document).ready(function () {
     var savedPassword = decodeURIComponent(getCookie('emojiPassword'));
     //alert(savedPassword);
 
-    //var group = getCookie('emojiPasswordGroup');
-    var group = 1;
+    var group = getCookie('emojiPasswordGroup');
+    //var group = 1;
     /* emoji area */
     if (group === 1) {
         $.emojiarea.path = '../jquery-emojiarea-master/packs/basic/images';
@@ -96,7 +96,7 @@ $(document).ready(function () {
         var input = $(this).val();
         var output = (emojione.shortnameToUnicode(input)).replace(/\s/g, ''); // click on emoji pastes shortname; has to be converted
         $(this).val(output);
-        $(this).focus();
+        //$(this).focus();
     }).on('keyup', function () {
         setUserData($(this).val());
     });

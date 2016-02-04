@@ -64,15 +64,9 @@
                     </h3>
                         <section>
                             <hr>
-                            <p style="margin-bottom:20px;">
-                                <img src="img/email-secure.png" style="max-height:150px; display:block; margin-bottom:20px;" class="center-block" /> Imagine you had to change the password for your primary email account.
-                                <br>
-                                <small>(Note: If you have issues with the password field, please make sure you are using
-                                Google Chrome or Apple Safari)
-                            </small>
-                            </p>
+                            <img src="img/email-secure.png" style="max-height:150px; display:block; margin-bottom:20px;" class="center-block" />
+                            <p style="margin-bottom:20px;">Imagine you had to change the password for your primary email account.</p>
                             <p><strong>Please create a password that meets the following requirements:</strong></p>
-
                             <div class="group-0">
                                 <ul class="help-block">
                                     <li class="policy-length">12 characters or more</li>
@@ -86,7 +80,7 @@
                                     <li class="policy-length">12 characters or more</li>
                                     <li class="policy-letters">upper and lowercase letters</li>
                                     <li class="policy-numbers">1 number or more</li>
-                                    <li class="policy-other">1 emoji character or more</li>
+                                    <li class="policy-other">1 emoji character or more<br><small>(some emoji are saved as two characters or more, because of their encoding)</small></li>
                                 </ul>
                             </div>
                             <div class="form-group" style="margin-top:30px;">
@@ -101,7 +95,7 @@
                                 <button type="button" class="btn btn-default" id="clear">Clear both</button>
                             </p>
                             <!-- Hidden fields for password metadata -->
-                            <div class=" ">
+                            <div class="hidden">
                                 <input type="text" name="pwGroup" id="password-group" placeholder="Group">
                                 <input type="text" name="pwLength" id="password-length" placeholder="Length">
                                 <input type="text" name="pwNumbers" id="password-numbers" placeholder="Numbers">
@@ -159,9 +153,10 @@
                                 </label>
                             </div>
                         </section>
+                        <hr>
+                        <h4>Feedback</h4>
                         <section>
                             <hr>
-                            <h4>Feedback</h4>
                             <p>It was difficult for me to find a password that fitted the given requirements.</p>
 
                             <div class="radio">
@@ -374,9 +369,7 @@
                             </div>
                         </section>
                         <hr>
-                        <h4>
-                        Password Management
-                    </h4>
+                        <h4>Password Management</h4>
                         <p><strong>
                         How do you manage your personal passwords?</strong>
                         </p>
@@ -544,6 +537,25 @@
                             <div class="radio">
                                 <label>
                                     <input type="radio" name="emojiVsSpecial" value="Strongly disagree"> Strongly disagree
+                                </label>
+                            </div>
+                        </section>
+                        <section>
+                            <hr>
+                            <p>I am already using emoji as part of passwords.</p>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="alreadyUsingEmoji" value="Yes" required> Yes
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="alreadyUsingEmoji" value="No"> No
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="alreadyUsingEmoji" value="No Answer"> I prefer not to answer
                                 </label>
                             </div>
                         </section>

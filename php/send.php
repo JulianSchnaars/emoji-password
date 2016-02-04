@@ -36,6 +36,7 @@ $valPwPhrase = $_POST['pwPhrase'];
 $valPwPicture = $_POST['pwPicture'];
 $valPwStory = $_POST['pwStory'];
 $valEmojiVsSpecial = $_POST['emojiVsSpecial'];
+$valAlreadyUsingEmoji = $_POST['alreadyUsingEmoji'];
 $valIsMoreSecure = $_POST['isMoreSecure'];
 $valIsAnnoying = $_POST['isAnnoying'];
 $valIsEasier = $_POST['isEasier'];
@@ -59,7 +60,7 @@ $sql = "INSERT INTO `survey_1`(
 `messagesOnPhone`,`emojiUseGeneral`,
 `passwordReuse`, `passwordReuseSlightModification`,
 `pwPhrase`,`pwPicture`,`pwStory`,
-`emojiVsSpecial`,
+`emojiVsSpecial`,`alreadyUsingEmoji`,
 `isMoreSecure`, `isAnnoying`, `isEasier`,
 `desktopVsMobile`,`specialCharactersDifficultOnMobile`,
 `nrAccounts`, `nrAccountsMobile`, `altAuthenticationMobile`,
@@ -74,7 +75,7 @@ $valLength,$valNumbers,$valLower,$valUpper,$valSpecial,$valEmojiNr,'$valEmoji',$
 '$valMessagesOnPhone','$valEmojiUseGeneral',
 '$valPasswordReuse','$valPasswordReuseSlightModification',
 '$valPwPhrase','$valPwPicture','$valPwStory',
-'$valEmojiVsSpecial',
+'$valEmojiVsSpecial','$valAlreadyUsingEmoji',
 '$valIsMoreSecure','$valIsAnnoying','$valIsEasier',
 '$valDesktopVsMobile','$valSpecialCharactersDifficultOnMobile',
 $valNrAccounts,$valNrAccountsMobile,'$valAltAuthenticationMobile',

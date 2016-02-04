@@ -40,7 +40,7 @@ function matchHeight() {
 function initGroup() {
     /* group 0 means no emoji in the password; group 1 means emoji are required */
     //var group = Math.floor(Math.random() * 2);
-    var group = 0;
+    var group = 1;
     $('#password-group').val(group);
     if (group === 0) { // no emoji
         $('.group-1').addClass('hidden');
@@ -118,7 +118,7 @@ $(document).ready(function () {
         var input = $(this).val();
         var output = (emojione.shortnameToUnicode(input)).replace(/\s/g, ''); // click on emoji pastes shortname; has to be converted
         $(this).val(output);
-        $(this).focus();
+        //$(this).focus();
     }).on('keyup', function () {
         //setMetadata($(this).val());
     });
@@ -148,7 +148,7 @@ $(document).ready(function () {
                             var pwEmojis = password.replace(regExAllButEmoji, '').length;
                             if (pwEmojis > 0) { // 4. check for emoji
                                 $('#questions').removeClass('hidden');
-                                //$('#password').addClass('hidden');
+                                $('#password').addClass('hidden');
                                 setMetadata(password);
                             } else {
                                 $('.policy-other').addClass('policy-error');

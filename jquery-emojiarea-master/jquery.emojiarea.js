@@ -400,8 +400,7 @@
 
 	EmojiMenu.prototype.onItemSelected = function(group, emoji) {
 		this.emojiarea.insert(group, emoji);
-        //this.emojiarea.focus();
-		this.hide();
+		//this.hide();
 	};
 
 	EmojiMenu.prototype.load = function() {
