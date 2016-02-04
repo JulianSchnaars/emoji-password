@@ -39,8 +39,8 @@ function matchHeight() {
 
 function initGroup() {
     /* group 0 means no emoji in the password; group 1 means emoji are required */
-    //var group = Math.floor(Math.random() * 2);
-    var group = 1;
+    var group = Math.floor(Math.random() * 2);
+    //var group = 1;
     $('#password-group').val(group);
     if (group === 0) { // no emoji
         $('.group-1').addClass('hidden');
@@ -111,7 +111,7 @@ $(document).ready(function () {
 
     /* check if mobile */
     if (isNotMobile.any()) {
-        //notMobileWarning();
+        notMobileWarning();
     }
 
     pwFields.on('change', function () {

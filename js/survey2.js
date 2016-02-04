@@ -68,12 +68,11 @@ function setUserData(passwordString) {
 $(document).ready(function () {
     var pwField1 = $('#password-1');
     var savedPassword = decodeURIComponent(getCookie('emojiPassword'));
-    //alert(savedPassword);
 
     var group = getCookie('emojiPasswordGroup');
     //var group = 1;
     /* emoji area */
-    if (group === 1) {
+    if (group === '1') {
         $.emojiarea.path = '../jquery-emojiarea-master/packs/basic/images';
         pwField1.emojiarea({
             wysiwyg: false,
@@ -88,7 +87,7 @@ $(document).ready(function () {
 
     /* check if mobile */
     if (isNotMobile.any()) {
-        //notMobileWarning();
+        notMobileWarning();
     }
 
     /* key events in input field - password */
