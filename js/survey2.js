@@ -72,14 +72,14 @@ $(document).ready(function () {
     var group = getCookie('emojiPasswordGroup');
     //var group = 1;
     /* emoji area */
-    if (group === '1') {
-        $.emojiarea.path = '../jquery-emojiarea-master/packs/basic/images';
-        pwField1.emojiarea({
-            wysiwyg: false,
-            buttonLabel: '',
-            buttonPosition: 'after'
-        });
-    }
+
+    $.emojiarea.path = '../jquery-emojiarea-master/packs/basic/images';
+    pwField1.emojiarea({
+        wysiwyg: false,
+        buttonLabel: '',
+        buttonPosition: 'after'
+    });
+
 
     /* set min-hiehgt for different sections */
     matchHeight();
